@@ -1,12 +1,11 @@
 body{
     margin: 0;
-    padding:0;
-    font-family: PT Sans;
+    padding: 0;
+    font-family: Alegreya Sans;
+    scroll-behavior: smooth;
 }
 .body{
-    position: absolute;
-    right: 0;
-    width: 80%;
+    width: 100%;
 }
 .mobile-sidebar{
     display: none;
@@ -22,19 +21,7 @@ body{
 .sidebar-icon{
     display: none;
 }
-.links{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    border-bottom: 1px solid black;
-    background-color: white;
-    padding: 20px 0;
-}
-.links img{
-    width: 50px;
-    margin-right: 20px;
 
-}
 .info-sidebar{
     margin-top: 50px;
     width: 100%;
@@ -43,8 +30,6 @@ body{
     align-items: center;
     font-size: 18px;
     text-align: center;
-    
-
 }
 .info-sidebar img{
     margin: 0 auto;
@@ -56,56 +41,89 @@ body{
     margin: 10px 0 0 0;
     color: white;
 }
+header{
+  position: relative;
+  height: 700px;
+}
 
+.background-img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  filter: blur(1px);
+}
+.blur{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(0,0,0,.8);
+}
 nav{
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    text-align: center;
-    margin-top: 50px;
-    
+    transition: background-color .2s;
+    z-index: 5;
 }
-
 nav ul{
     list-style: none;
     margin: 0;
-    
+    float: right;
+    margin: 10px 0;
 }
 nav ul li{
     display: inline;
-   
 }
 nav ul li a{
-    color: black;
+    color: white;
     text-decoration: none;
     padding: 20px;
     font-size: 20px;
+    transition: font-size .2s;
 }
 .header{
-    display: grid;
-    grid-template-columns: 40% 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.header .right{
-    display: flex;
-    align-items: center;    
-  
+.info{
+  text-align: center;
+  color: white;
+  padding: 0 90px;
+  position: relative;
+  height: 70%;
 }
-.right img{
-    width: 100%;
+.info h1{
+  font-size: 60px;
 }
-
-.header .left{
-    display: flex;
-    align-items: center;
-    margin-left: 40px;
-   
+.info span{
+  font-size: 30px;
+  margin: 0;
 }
-
+.typed-cursor{
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
 .buttons{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    width: 200px;
+    height: 80px;
     display: flex;
     justify-content: center;
-    padding: 10px 0;
+    padding: 100px 0 0 0;
 }
 .buttons a{
     padding: 20px;
@@ -114,17 +132,14 @@ nav ul li a{
     background-color:  #05668D;
     border-radius: 40px;
     font-size: 30px;
-    transition: padding .7s;
+    transition: background-color .1s;
 }
 .buttons a:hover{
-    padding: 25px;
+  background-color:  #0c5978;
 }
-
-
 .about-me{
-    margin: 0 auto;
-    width: 90%;
-    
+    width: auto;
+    padding: 60px;
 }
 .about-me ul{
     list-style-type: circle;
@@ -136,23 +151,26 @@ nav ul li a{
     display: grid;
     grid-template-columns: 50% 50%;
     margin-bottom: 100px;
-
+    position: relative;
 }
 .container1 .left{
     display: flex;
     align-items: center;
+    width: 80%;
 
+}
+.container1 .left p{
+  font-size: 25px;
 }
 .container1 .right{
     display: flex;
     align-items: center;
 
 }
-.about-me .container2{
+ .container2{
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 40% 60%;
     margin-bottom: 100px;
-
 }
 .container2 .left{
     display: flex;
@@ -162,20 +180,69 @@ nav ul li a{
 .container2 .right{
     display: flex;
     align-items: center;
+    margin-left: 200px;
 
 }
-.container2 .left img{
-    width: 80%;
+.container2 .right p{
+  font-size: 22px;
+}
+.about-me img{
+  width: 100%;
+}
+.tech{
+  padding: 20px 60px 200px 60px;
+
+}
+.tech p{
+  margin: 60px 0;
+  text-align: center;
+  font-size: 45px;
 }
 
+.technologies{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-row-gap: 50px;
+}
+.technologies img{
+  width: 200px;
+}
+.tech-to-projects{
+  height: 50px;
+  background-color: black;
+  transform: skew(0deg, 2deg);
+}
 .projects{
-    background-color: rgb(34, 33, 33);
-    color: black;
+  position: relative;
+  background-color: rgba(5, 102, 141);
+  color: black;
+  padding: 0 60px;
+}
+.projects:before{/*Important stuff right here. This is how I managed to create a skewed container. This is the top part of it*/
+  content:'';
+  position: absolute;
+  left: 0;
+  top: -100px;
+  width: 100%;
+  height: 100%;
+  background-color:  rgba(5, 102, 141);
+  transform: skewY(6deg);
+  z-index: -1;
+}
+.projects:after{/*This is the bottom part */
+  content:'';
+  position: absolute;
+  left: 0;
+  top: 100px;
+  width: 100%;
+  height: 100%;
+  background-color:  rgba(5, 102, 141);
+  transform: skewY(6deg);
+  z-index: -1;
 }
 .projects h1{
-    padding: 20px;
     color: white;
-    
+    margin: 0;
 }
 .box{
     display: flex;
@@ -193,7 +260,8 @@ nav ul li a{
     height: auto;
     margin-right: 40px;
     padding: 10px;
-    box-shadow: 2px 10px 9px rgb(78, 78, 78);
+    box-shadow: 2px 10px 20px rgb(255,255,255,.05);
+    border-radius: 10px;
 }
 .title{
     position: absolute;
@@ -201,44 +269,31 @@ nav ul li a{
     font-size: 30px;
     margin: 0;
 }
-.origami{
-   
-}
-
 .origami img{
-    width: 100%;
+    width: 50%;
 }
 .origami p{
     cursor: default;
 }
 
-.booked{
-    
-}
-
 .booked img{
-    width: 100%;
+    width: 50%;
 }
 .booked p{
     cursor: default;
 }
-
 .entenda-mais{
    margin-right: 0;
-
 }
-
 .entenda-mais img{
     margin-top: 50px;
-    width: 80%;
+    width: 40%;
 }
 .entenda-mais p{
     cursor: default;
-   
 }
 .contact {
-    margin: 0 auto;
-    width: 90%;
+    padding: 100px 60px 20px 60px;
 }
 .contact h1{
     font-size: 32px;
@@ -247,12 +302,21 @@ nav ul li a{
     text-align: center;
     font-size: 50px;
 }
-
 footer{
+    position: relative;
     width: 100%;
     background-color:rgb(14, 13, 13);
+    height: auto;
     text-align: center;
-    height: 50px;
+}
+.links{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.links img{
+    width: 50px;
+    margin-right: 20px;
 }
 footer p{
     margin: 0;
@@ -260,99 +324,143 @@ footer p{
 }
 
 @media (max-width:900px){
-   .body{
-       margin-top: 50px;
-       width: 100%;
-   }
-   .mobile-sidebar{
-       display: none;
-       position:fixed;
-       top: 0;
-       right: 0;
-       background-color: #05668D;
-       width: 100%;
-       height: 100%;
-       z-index: 1;
-       padding: 0;
-   }
-   .mobile-sidebar .photo{
-       width: 150px;
-   }
-   .mobile-sidebar p{
-       font-size: 20px;
-   }
-   .mobile-sidebar ul{
-       margin: 30px auto;
-       width: 70%;
-       background-color: white;
-       padding: 0;
-       border-radius: 5px;
-       
-   }
-   .mobile-sidebar ul li{
-       list-style-type: none;
-       border-bottom: solid 1px black;
-       text-align: center;
-       padding: 5px 0;
-      
-   }
-   .mobile-sidebar ul li a{
-       color: black;
-       text-decoration: none;
-       font-size: 30px;
-   }
-   .close{
-       font-size: 90px;
-       position: absolute;
-       top: -20px;
-       right: 5px;
-       color: black;
-       padding: 0;
-   }
-   .sidebar{
-       display: none;
-   }
-   .sidebar-icon{
-        display: block;
-        width: 40px;
-        position: absolute;
-        top: 10px;
-        right:10px;
-    }
-   nav{
-       display: none;
-   }
-   
-   .header, .container1, .container2 {
-       display: block !important; /*If you use important it will overide all previous config*/
-   }
-   .header .left{
-        margin: 0 auto;
-        width: 98%;
-    }
-    .container2 .left{
-        align-items: center;
-        justify-content: center;
-    }
-    .projects{
-        padding-bottom: 20px;
-    }
-    .projects .box{
-        display: block;
-        padding: 0;
-    }
-    .projects .box .item{
-        margin: 0 auto;
-        width: 70%;
-        margin-bottom: 20px;
-        box-shadow: none;
-    }
-    .booked img{
-        margin-top: 30px;
-    }
-   
-   .content .email{
-       font-size: 25px;
-   }
-   
+  .body{
+     width: 100%;
+  }
+  .mobile-sidebar{
+     display: none;
+     position:fixed;
+     top: 0;
+     right: 0;
+     background-color: #05668D;
+     width: 100%;
+     height: 100%;
+     z-index: 1;
+     padding: 0;
+  }
+  .mobile-sidebar .photo{
+     width: 150px;
+  }
+  .mobile-sidebar p{
+     font-size: 20px;
+  }
+  .mobile-sidebar ul{
+     margin: 30px auto;
+     width: 70%;
+     background-color: white;
+     padding: 0;
+     border-radius: 5px;
+  }
+  .mobile-sidebar ul li{
+     list-style-type: none;
+     border-bottom: solid 1px black;
+     text-align: center;
+     padding: 5px 0;
+  }
+  .mobile-sidebar ul li a{
+     color: black;
+     text-decoration: none;
+     font-size: 30px;
+  }
+  .close{
+     font-size: 90px;
+     position: absolute;
+     top: -20px;
+     right: 5px;
+     color: black;
+     padding: 0;
+  }
+  .sidebar{
+     display: none;
+  }
+  .sidebar-icon{
+      display: block;
+      width: 40px;
+      position: absolute;
+      top: 10px;
+      right:10px;
+  }
+  header{
+    height: 500px;
+  }
+  nav{
+     display: none;
+  }
+  .info{
+   height: 60%;
+   padding: 0;
+  }
+  .info h1{
+  margin: 0 ;
+  padding: 0;
+  font-size: 25px;
+  }
+  .info span{
+  font-size: 20px;
+  }
+  .about-me img{
+  width: 300px;
+  }
+  .about-me{
+  padding: 10px;
+  }
+  .about-me .container1{
+  display: block;
+  }
+  .about-me .container1 .left{
+  width: 100%;
+  }
+  .about-me .container1 .right{
+    align-items: center;
+    justify-content: center;
+  }
+  .about-me .container2{
+  display: block;
+  }
+  .about-me .container2 .right{
+  margin: 0;
+  }
+  .about-me .container2 .left{
+    align-items: center;
+    justify-content: center;
+  }
+  .tech{
+  padding: 0px 10px 200px 10px;
+  }
+  .tech p{
+  margin: 60px 0;
+  text-align: center;
+  font-size: 30px;
+  }
+  .technologies{
+  grid-template-columns: auto auto;
+  }
+  .projects{
+    padding-bottom: 20px;
+  }
+  .projects .box{
+    display: block;
+    padding: 0;
+  }
+  .projects .box .item{
+    margin: 0 auto;
+    width: 250px;
+    margin-bottom: 80px;
+    box-shadow: none;
+  }
+  .booked img{
+    margin-top: 30px;
+  }
+  .content .email{
+   font-size: 25px;
+  }
+  .links{
+  justify-content: center;
+  }
+}
+
+@media (max-width:500px){
+  .technologies{
+    grid-template-columns: auto;
+  }
 }

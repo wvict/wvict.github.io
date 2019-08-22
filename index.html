@@ -6,79 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weslley Vieira - Personal website.</title>
     <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans|Ubuntu|Alegreya+Sans&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
 </head>
 <body>
-    <div class="mobile-sidebar">
-        <span class="close">&times;</span>
-        <div class="links">
-            <a target="_blank" href="https://github.com/wvict"><img src="images/github-logo.svg" alt=""></a>
-            <a target="_blank" href="https://linkedin.com/in/wvict"><img src="images/linkedin.svg" alt=""></a>
-            <a  target="_blank" href="https://www.youtube.com/channel/UChKfMu5nqzFLgLHa-R0a12A"><img src="images/youtube.svg" alt=""></a>
-
-        </div>
-        <div class="info-sidebar">
-            <img class="photo" src="images/me.jpg">
-            <p>E-mail: wvictor07@gmail.com</p>
-            <p>Skype ID: wvictor15</p>
-        </div>
-
-        <ul>
-            <li><a class="mobile-link" href="#">Home</a></li>
-            <li><a class="mobile-link" href="#about-me">About me</a></li>
-            <li><a class="mobile-link" href="#projects">Projects</a></li>
-            <li><a class="mobile-link" href="#contact">Contact</a></li>
-
-        </ul>
-    </div>
-    <div class="sidebar">
-        <div class="links">
-            <a target="_blank" href="https://github.com/wvict"><img src="images/github-logo.svg" alt=""></a>
-            <a target="_blank" href="https://linkedin.com/in/wvict"><img src="images/linkedin.svg" alt=""></a>
-            <a  target="_blank" href="https://www.youtube.com/channel/UChKfMu5nqzFLgLHa-R0a12A"><img src="images/youtube.svg" alt=""></a>
-
-        </div>
-        <div class="info-sidebar">
-            <img src="images/me.jpg">
-            <p>E-mail: wvictor07@gmail.com</p>
-            <p>Skype ID: wvictor15</p>
-        </div>
-    </div>
-    <img class="sidebar-icon" src="images/sidebar-icon.svg" >
-
     <div class="body">
-        <nav>
+      <header>
+        <img class="background-img" src="images/background.jpg">
+        <div class="blur"></div>
+        <nav class="nav">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#about-me">About me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                
-
+                <li><a class="nav-items" href="#">Welcome</a></li>
+                <li><a class="nav-items" href="#about-me">About me</a></li>
+                <li><a class="nav-items" href="#technologies">Technologies</a></li>
+                <li><a class="nav-items" href="#projects">Projects</a></li>
+                <li><a class="nav-items" href="#contact">Contact</a></li>
             </ul>
         </nav>
-    
         <div class="header">
-            <div class="left">
-                <div class="info">
-                        <h1>My name is Weslley Vieira and I'm a Web Developer!</h1>
-                        <p>I develop web applications with the purpose of enabling people to use the internet - one of the most impressive human creations - to do great things!</p>
-                </div>
-                
-            </div>
-            <div class="right">
-                <img src="images/workspace.gif">
-            </div>
+          <div class="info">
+                  <h1>My name is Weslley Victor and I'm a Web Developer</h1>
+                  <span class="type"></span>
+                  <div class="buttons">
+                        <a href="#about-me">Learn more</a>
+                  </div>
+          </div>
         </div>
-        <div class="buttons">
-                <a href="#contact">Contact me</a>
-               
-        </div>
+
+
+      </header>
+
         <div class="content">
             <div id="about-me" class="about-me">
                 <h1>ABOUT ME</h1>
                 <div class="container1">
                     <div class="left">
-                            <p>I am a curious person who found in software development a way to create new things and, at the same time, help people by developing useful applications.</p>
+                            <p>I am a curious person who found in software development a way to solve interesting problems, create new things from scratch, be part of a great community and help individuals and organizations to do awesome things using the internet.</p>
                     </div>
                     <div class="right">
                         <img src="images/about1.svg">
@@ -93,23 +56,25 @@
                         <p>Aside from developing websites and web applications, I'm also passionate about understanding the physical world around us. That's why I'm enrolled in an undergraduate degree in Physics (with minor in Computer Science) at the Universidade do Porto, Portugal. Therefore, when I'm not creating new web projects, I'm probably learning about diferential calculus, electromagnetism, quantum mechanics or planetary astronomy!</p>
                     </div>
                 </div>
-                
-                <p>I have more than a year of experience developing web applications using the following technologies:</p>
-                <ul>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript</li>
-                    <li>JQuery</li>
-                    <li>PHP</li>
-                    <li>MySQL</li>
-                    
-                </ul>
-                <p>I have a basic understanding of Node.Js and Express. I intend to create a few other projects using this technology in a near future. I also have experience with the Python programming language and a few of its libraries for data analysis: numpy, matplotlib, among others. I also have experience with the PHP framework Laravel, which I used intensively for a few months. </p>
-                <p>One of the things I enjoy the most is to learn new things. And one of the awesome things about the web development industry is that you get to do exactly that every day! Even though I never dealt with technologies such as Ruby on Rails, Python web frameworks (Django and Flask), the asp.Net technologies and so many others, I do have the desire to learn them if necessary. I believe that all these technologies have the same goal: to help developers create useful products. And I plan to do so, regardless of the technology or stack used.  </p>
-            </div>
 
+            </div>
+            <div class="tech" id="technologies">
+              <h1>TECHNOLOGIES</h1>
+              <div class="technologies">
+                  <img src="images/html5.png">
+                  <img src="images/css.png">
+                  <img src="images/js.png">
+                  <img src="images/jquery.gif">
+                  <img src="images/php.svg">
+                  <img src="images/mysql.png">
+                  <img src="images/laravel.png">
+                  <img src="images/nodejs.png">
+              </div>
+
+                <p>I have experience creating web applications both on the back-end and front-end</p>
+            </div>
             <div id="projects" class="projects">
-                <h1>Here are some of the projects I developed over time:</h1>
+                <h1>Here are some of the projects I developed:</h1>
                 <div class="box">
                     <div class="origami item">
                         <p class="title">Origami</p>
@@ -127,31 +92,38 @@
                         <p class="title">Entenda Mais</p>
                         <img src="images/entenda-mais.png">
                         <p>Entenda Mais ("Understand more" in english) is a personal project created with the purpose of sharing how science and technology shape the modern world. </p>
-                        <a target="_blank" href="https://github.com/wvict/entendamais-laravel"><img style="width: 30px; margin:0 auto;" src="images/github-character.svg"></a>
-                        <a target="_blank" href="https://facebook.com/entendama1s"><img src="images/facebook.svg" style="width:30px;margin:0 auto;"></a>
+                        <div>
+                          <a target="_blank" href="https://github.com/wvict/entendamais-laravel"><img style="width: 30px; margin:0 auto;" src="images/github-character.svg"></a>
+                          <a target="_blank" href="https://facebook.com/entendama1s"><img src="images/facebook.svg" style="width:30px;margin:0 auto;"></a>
+                        </div>
+
 
                     </div>
                 </div>
-                <p style="color: white;text-align: center;font-size:25px;">On those projects, I utilized PHP as the server-side language and MySQL as the database.</p>
+
             </div>
 
             <div id="contact" class="contact">
                 <h1>CONTACT</h1>
                 <p>You can reach out to me by sending an e-mail to:</p>
                 <p class="email">wvictor07@gmail.com</p>
-                
             </div>
-            
         </div>
 
         <footer>
             <p>Created by Weslley. All rights reserved.</p>
-            <p>Illustrations by <a style="color: white" target="_blank" href="https://dribbble.com/kunchevsky">Alex Kunchevsky</a> and <a target="_blank" href="https://undraw.co/" style="color: white">unDraw</a>.</p>
+            <p>Illustrations by <a target="_blank" href="https://undraw.co/" style="color: white">unDraw</a>.</p>
+
+            <div class="links">
+                <a target="_blank" href="https://github.com/wvict"><img src="images/github.png" alt=""></a>
+                <a target="_blank" href="https://linkedin.com/in/wvict"><img src="images/linkedin.png" alt=""></a>
+                <a  target="_blank" href="https://www.youtube.com/channel/UChKfMu5nqzFLgLHa-R0a12A"><img src="images/youtube.png" alt=""></a>
+            </div>
         </footer>
-        
+
     </div>
-    
-    
+
+
     <script src="js/main.js"></script>
 </body>
 </html>
