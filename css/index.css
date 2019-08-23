@@ -87,6 +87,7 @@ nav ul li a{
     padding: 20px;
     font-size: 20px;
     transition: font-size .2s;
+    outline: none;
 }
 .header{
   height: 100%;
@@ -317,6 +318,9 @@ footer{
 .links img{
     width: 50px;
     margin-right: 20px;
+}
+.links a{
+  outline: none;
 }
 footer p{
     margin: 0;
