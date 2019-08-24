@@ -104,10 +104,12 @@ nav ul li a{
 }
 .info h1{
   font-size: 60px;
+  cursor: default;
 }
 .info span{
   font-size: 30px;
   margin: 0;
+  cursor: default;
 }
 .typed-cursor{
   font-size: 30px;
@@ -261,7 +263,7 @@ nav ul li a{
     height: auto;
     margin-right: 40px;
     padding: 10px;
-    box-shadow: 2px 10px 20px rgb(255,255,255,.05);
+    box-shadow: 0 10px 10px 5px rgb(0,0,0,.3);
     border-radius: 10px;
 }
 .title{
