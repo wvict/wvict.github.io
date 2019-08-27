@@ -26,3 +26,6 @@ window.onscroll = function(){
     }
   }
 }
+
+const item = document.querySelectorAll('.item')
+const videos = document.querySelector('.videos')
