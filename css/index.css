@@ -3,6 +3,7 @@ body{
     padding: 0;
     font-family: Alegreya Sans;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 .body{
     width: 100%;
@@ -120,22 +121,27 @@ nav ul li a{
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 20px;
     margin: 0 auto;
-    width: 200px;
+    width: 290px;
     height: 80px;
     display: flex;
     justify-content: center;
     padding: 100px 0 0 0;
 }
 .buttons a{
-    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    width: 100%;
     color: white;
     text-decoration: none;
     background-color:  #05668D;
     border-radius: 40px;
-    font-size: 30px;
+    font-size: 32px;
     transition: background-color .1s;
+    outline: none;
 }
 .buttons a:hover{
   background-color:  #0c5978;
@@ -203,6 +209,8 @@ nav ul li a{
 }
 
 .technologies{
+  margin: 0 auto;
+  width: 100%;
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-row-gap: 50px;
@@ -404,6 +412,13 @@ footer p{
   }
   .info span{
   font-size: 20px;
+  }
+  .buttons{
+    bottom: -20px;
+    width: 100px;
+  }
+  .buttons a{
+    font-size: 25px;
   }
   .about-me img{
   width: 300px;
