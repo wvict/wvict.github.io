@@ -2,10 +2,11 @@ const nav = document.querySelector('.nav')
 const navItems = document.querySelectorAll('.nav-items')
 
 let options = {
-  strings: ["I develop web applications with the purpose of solving
-common problems for individuals and organizations"],
-  typeSpeed: 45,
-  cursorChar: "|"
+  strings: ["and I like solving problems...^1000", "and I like to create things that help other people...^1000", "and I like math, science and technology...", "I'm a Software Developer!", ],
+  typeSpeed: 50,
+  cursorChar: "|",
+  backSpeed: 30
+
 }
 
 let typed = new Typed(".type", options)
