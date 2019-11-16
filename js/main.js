@@ -2,7 +2,8 @@ const nav = document.querySelector('.nav')
 const navItems = document.querySelectorAll('.nav-items')
 
 let options = {
-  strings: ["I develop web applications with the purpose of enabling people to use the internet - one of the most impressive human creations - to do great things!"],
+  strings: ["I develop web applications with the purpose of solving
+common problems for individuals and organizations"],
   typeSpeed: 45,
   cursorChar: "|"
 }
