@@ -1,12 +1,52 @@
+html {
+  scroll-behavior: smooth
+}
 body{
     margin: 0;
     padding: 0;
     font-family: Alegreya Sans;
-    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 .body{
     width: 100%;
+}
+.modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.92);
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content{
+  position: relative;
+  width: 70%;
+  height: 80%;
+  background-color: white;
+  border-radius: 5px;
+
+}
+.video{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+.video video{
+  z-index: 12;
+}
+.modal-info{
+  position: absolute;
+  padding: 0 0 0 150px;
+  top: 0px;
+  left: 40%;
+  background-color: rgba(77, 215, 240, 0.1);
+  width: 44%;
+  height: 100%;
 }
 .mobile-sidebar{
     display: none;
