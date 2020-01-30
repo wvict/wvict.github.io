@@ -133,12 +133,13 @@ nav ul li a{
 .info h1{
   font-size: 60px;
   cursor: default;
+  font-family: Ubuntu;
 }
 .info span{
   font-size: 30px;
   margin: 0;
   cursor: default;
-  font-family:  Alegreya Sans;
+  font-family:  Ubuntu;
 }
 .typed-cursor{
   font-size: 30px;
@@ -198,7 +199,7 @@ nav ul li a{
 
 }
 .container1 .left p{
-  font-size: 25px;
+  font-size: 29px;
 }
 .container1 .right{
     display: flex;
@@ -207,7 +208,7 @@ nav ul li a{
 }
  .container2{
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 45% 55%;
     margin-bottom: 100px;
 }
 .container2 .left{
@@ -215,14 +216,17 @@ nav ul li a{
     align-items: center;
 
 }
+.container2 .left img{
+  border-radius: 5px;
+}
 .container2 .right{
     display: flex;
     align-items: center;
-    margin-left: 200px;
+    margin-left: 50px;
 
 }
 .container2 .right p{
-  font-size: 22px;
+  font-size: 29px;
 }
 .about-me img{
   width: 100%;
