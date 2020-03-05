@@ -1,0 +1,65 @@
+body{
+  padding: 0;
+  background-color: #262626;
+}
+.container{
+  margin: 20px;
+   font-family: Cormorant;
+  font-size: 20px;
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid black;
+  box-shadow: 5px 5px 12px 5px rgba(0,0,0,.3);
+  background-color: white;
+  padding: 20px;
+}
+header{
+	background: url('../images/background.png');
+	background-size: cover;
+	height: 200px;
+
+}
+header .code{
+	position: relative;
+	width: 60%;
+	left: 0;
+	margin: 0 20px;
+}
+header img{
+	width: 300px;
+	margin: 0 20px;
+}
+
+.content{
+	display: flex;
+}
+.sidebar{
+	position: relative;
+	left: 0;
+	width: 20%;
+	border-right: 1px solid gray;
+}
+.sidebar a{
+	text-decoration: none;
+}
+.sidebar a:hover{
+	text-decoration: underline;
+}
+.right{
+	position: relative;
+	right: 0;
+	width: 80%;
+	padding: 20px;
+}
+.physics-img{
+	margin: 40px 20px;
+}
+
+a{
+  text-decoration: underline;
+  text-decoration-color: black;
+  color: black;
+}
+ul li{
+	list-style-type: circle;
+}
