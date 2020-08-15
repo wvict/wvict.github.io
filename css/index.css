@@ -181,8 +181,7 @@ nav ul li a{
 }
 .tech p{
   margin: 60px 0;
-  text-align: center;
-  font-size: 45px;
+  font-size: 35px;
 }
 
 .technologies{
@@ -195,7 +194,7 @@ nav ul li a{
   grid-row-gap: 100px;
 }
 .technologies img{
-  width: 200px;
+  width: 180px;
 }
 .tech-to-projects{
   height: 50px;
@@ -284,6 +283,7 @@ nav ul li a{
     cursor: default;
 }
 .contact {
+  position: relative;
   height: 350px;
   padding: 100px 60px 20px 60px;
 }
@@ -293,10 +293,15 @@ nav ul li a{
 .contact p{
   font-size: 30px;
 }
-.contact .email{
-    margin: 0 45%;
-    width: 10%;
+.email{
+  width: 100px;
+  margin: 0 auto;
+
 }
+.email img{
+  width: 100%;
+}
+
 footer{
     position: relative;
     width: 100%;
@@ -326,59 +331,6 @@ footer p{
   .body{
      width: 100%;
   }
-  .mobile-sidebar{
-     display: none;
-     position:fixed;
-     top: 0;
-     right: 0;
-     background-color: #05668D;
-     width: 100%;
-     height: 100%;
-     z-index: 1;
-     padding: 0;
-  }
-  .mobile-sidebar .photo{
-     width: 150px;
-  }
-  .mobile-sidebar p{
-     font-size: 20px;
-  }
-  .mobile-sidebar ul{
-     margin: 30px auto;
-     width: 70%;
-     background-color: white;
-     padding: 0;
-     border-radius: 5px;
-  }
-  .mobile-sidebar ul li{
-     list-style-type: none;
-     border-bottom: solid 1px black;
-     text-align: center;
-     padding: 5px 0;
-  }
-  .mobile-sidebar ul li a{
-     color: black;
-     text-decoration: none;
-     font-size: 30px;
-  }
-  .close{
-     font-size: 90px;
-     position: absolute;
-     top: -20px;
-     right: 5px;
-     color: black;
-     padding: 0;
-  }
-  .sidebar{
-     display: none;
-  }
-  .sidebar-icon{
-      display: block;
-      width: 40px;
-      position: absolute;
-      top: 10px;
-      right:10px;
-  }
   header{
     height: 500px;
   }
@@ -402,21 +354,30 @@ footer p{
   }
   .buttons{
     bottom: -20px;
-    width: 200px;
+    width: 70%;
   }
   .buttons a{
+    width: 100%;
     font-size: 25px;
   }
   .tech{
-  padding: 0px 10px 150px 10px;
+  padding: 0px 10px 50px 10px;
   }
   .tech p{
-  margin: 60px 0;
-  text-align: center;
+  margin-top: 40px
   font-size: 30px;
   }
   .technologies{
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
+  }
+  .technologies img{
+    margin: 20px 0;
+  }
+  .projects:before{/*Important stuff right here. This is how I managed to create a skewed container. This is the top part of it*/
+    top: -50px;
+  }
+  .projects:after{/*This is the bottom part */
+    top: 50px;
   }
   .projects{
     padding-bottom: 20px;
@@ -433,29 +394,40 @@ footer p{
   .projects .box .item{
     margin: 0 auto;
     width: 250px;
-    margin-bottom: 80px;
-    box-shadow: none;
+    margin-bottom: 30px;
+    padding-top: 20px;
   }
   .booked img{
     margin-top: 30px;
   }
-  .contact .email{
-      margin: 0 26%;
-      width: 50%;
+  .contact{
+    padding: 50px 60px 20px 60px;
   }
   .links{
   justify-content: center;
   }
 }
 
-@media (max-width:490px){
+@media (max-width:675px){
+  .buttons{
+    bottom: -20px;
+    width: 70%;
+  }
+  .buttons a{
+    width: 100%;
+    font-size: 25px;
+  }
   .technologies{
     display: block;
     text-align: center;
     width: 100%
   }
   .technologies img{
-    margin: 40px 0;
+    width: 90px;
+    margin: 40px 10px;
+  }
+  .tech p{
+    font-size: 20px;
   }
   .item{
     width: 200px !important;
