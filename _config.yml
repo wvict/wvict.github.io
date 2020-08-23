@@ -21,7 +21,7 @@
 title: Weslley's blog
 email: wvictor07@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  This is a place where I share thoughts and ideas about software development, but also about other stuff I'm passionate about like physics and science in general!
+  This is a place where I share thoughts and ideas about software development, physics and science in general (among other things =D)!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "personal-website" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: wvict_
