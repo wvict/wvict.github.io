@@ -1,0 +1,7 @@
+@import "blog.css";
+
+header{
+	background: url('../images/background-projects.png');
+	background-size: cover;
+	height: 250px;
+}
