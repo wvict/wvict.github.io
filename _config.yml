@@ -24,8 +24,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   This is a place where I share thoughts and ideas about software development, physics and science in general (among other things =D)!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "personal-website" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: wvict_
-github_username:  wvict
+twitter_username: _w3slley
+github_username:  w3slley
 
 # Build settings
 theme: minima
