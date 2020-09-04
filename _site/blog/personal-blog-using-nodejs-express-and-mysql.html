@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Personal blog using Node.Js, Express and MySQL | Weslley’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Personal blog using Node.Js, Express and MySQL" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I recently finished a personal blog website, a project I’ve working on for a couple of months now. As with some of other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch)." />
+<meta property="og:description" content="I recently finished a personal blog website, a project I’ve working on for a couple of months now. As with some of other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch)." />
+<link rel="canonical" href="http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql" />
+<meta property="og:url" content="http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql" />
+<meta property="og:site_name" content="Weslley’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-04T00:00:00+01:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql","headline":"Personal blog using Node.Js, Express and MySQL","dateModified":"2020-09-04T00:00:00+01:00","datePublished":"2020-09-04T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql"},"description":"I recently finished a personal blog website, a project I’ve working on for a couple of months now. As with some of other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch).","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Weslley's blog" /></head>
+<link rel="shortcut icon" type="image/svg" href="/assets/images/logo.svg">
+  <body><header class="site-header" role="banner">
+  <!--Hard coded desired navbar-->  
+  <div class="wrapper">
+    <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path         d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/">Home</a>
+            <a class="page-link" href="/projects/">Projects</a>
+            <a class="page-link" href="/physics/">Physics</a>
+            <a class="page-link" href="/writing/">Writing</a>
+        </div>
+      </nav>
+    <a class="site-title" rel="author" href="/blog">Weslley&#39;s blog</a></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Personal blog using Node.Js, Express and MySQL</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-09-04T00:00:00+01:00" itemprop="datePublished">Sep 4, 2020
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>I recently finished a <a href="https://w3slley-blog.herokuapp.com/">personal blog website</a>, a project I’ve working on for a couple of months now. As with some of other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch).</p>
+
+<p>Anyways, it’s been a while since I wanted to create a place where I could share thoughts and ideas, combined with a place to display some of the stuff I work on both on software development but also in physics. And it took me a while since I’ve been busy with university and everything. But this summer (2020) I managed to get the time needed to finish this and also to work on some other projects - which I’ll eventually talk about in the <code class="language-plaintext highlighter-rouge">projects</code> section.</p>
+
+<p>You could argue that one doesn’t need to develop a blog platform from scracth if they want to publish articles or blogposts online. But what I wanted to use this challenge (creating a blog) to learn more about Node.Js, MySQL, handlebars and others. And as an end result I would have a platform to share stuff on.</p>
+
+<p>Right when I was developing the project I came across the static site generator Jekyll, which is a pretty useful tool for quickly setting up a personal blog. Since I wanted to continue using the <code class="language-plaintext highlighter-rouge">w3slley.github.io</code> domain name from Github and I don’t plan to buy a new one for now, I’m using Jekyll with Github Pages to host my current personal website. But in a near future I’ll get a domain name for myself and I’ll use the blog, taking advantage of the functionalities I developed there.</p>
+
+<p>And since I mentioned it, it would be good to start talking about some of the features I managed to implement.</p>
+
+<h2 id="tech-stack-and-features">Tech stack and features</h2>
+
+<p>First I would like to talk about the tech stack I used. I utilized Node.Js and Express (the back-end tools I’m most comfortable with right now), handlebars for the template engine and MySQL - the latter was chosen to practice my skills in database design I learned last semester at university. Another thing worth pointing out is the fact that I used MVC from the very start, which made easier to manage the application when it started to get a little bit bigger, on top of all the modularity and compartmentalization that comes with it.</p>
+
+<p>I used <a href="https://github.com/mathjax/MathJax">MathJax</a> so that I could type equations and mathematical symbols (useful for posts where I talk about physics and maths) and also <a href="https://prismjs.com">Prism.Js</a> for the code highlighting. The posts can be written in markdown, making the author’s life easier, also taking advantage of the markdown code syntax (using backticks for inline code and tripple backticks for blocks of code) and other useful markdown commands. I also added a tag system where each post can be tagged with one or more labels and one can also click them and see all the posts with that particular tag, which is something the Jekyll blog doesn’t have (at least I didn’t bother to look up at the documentation to see how to implement something like this).</p>
+
+<h2 id="challenges">Challenges</h2>
+
+<p>One of the difficulties I had to do with fact that the <code class="language-plaintext highlighter-rouge">mysql</code> Node.Js module uses asynchronous callbacks after each query to the database. One of the tasks I had to implement was to display all tags for each blogpost in the index page. For that I needed to, of course, get all the tags for each post from the database.
+<img src="https://imgur.com/ues5KvY.png" alt="" /></p>
+
+<p>My initial idea was to add each array of tags into another array called <code class="language-plaintext highlighter-rouge">tags</code> and send this array to the handlebars view - since the size of the <code class="language-plaintext highlighter-rouge">tags</code> array will be equal to the size of the <code class="language-plaintext highlighter-rouge">posts</code> array (array of total posts on the database), they will exactly match and each post will be tagged with its correct tag.</p>
+
+<p>But you just can’t synchronously populate the <code class="language-plaintext highlighter-rouge">tags</code> array with something like this:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">'</span><span class="s1">SELECT post_id, title, slug, date_created FROM POST ORDER BY date_created DESC</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">posts</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span>
+  <span class="nx">tags</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">posts</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">'</span><span class="s1">SELECT label FROM TAG NATURAL JOIN POST_TAG NATURAL JOIN POST WHERE post_id=?</span><span class="dl">'</span><span class="p">,</span><span class="nx">posts</span><span class="p">.</span><span class="nx">post_id</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+      <span class="nx">tags</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span><span class="nx">posts</span><span class="p">,</span> <span class="nx">tags</span><span class="p">});</span>
+
+</code></pre></div></div>
+<p>because <code class="language-plaintext highlighter-rouge">res.render()</code> would be executed right after the for loop, before receiving the data from the database. And you would end up with an empty array being sent to the handlebars views.</p>
+
+<p>The way I solved this was using recursion: I created a function called <code class="language-plaintext highlighter-rouge">getTags</code> that has as input the response object; the <code class="language-plaintext highlighter-rouge">posts</code> array which is gathered from the database, each element being an object from a specific post; a position variable which I called <code class="language-plaintext highlighter-rouge">pos</code> and the <code class="language-plaintext highlighter-rouge">tags</code> array initially empty. The <code class="language-plaintext highlighter-rouge">pos</code> variable goes from 0 to the number of total posts minus one and it was used to “traverse” the post, increasing its size on each iteration. Finally, when it gets to the end of the <code class="language-plaintext highlighter-rouge">posts</code> array, it renders the index page with the <code class="language-plaintext highlighter-rouge">posts</code> array and also with the now populated <code class="language-plaintext highlighter-rouge">tags</code> array. Of course I had to return nothing to all the previous recursive calls.</p>
+
+<p>This was the function I used:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getTags</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">posts</span><span class="p">,</span> <span class="nx">pos</span><span class="p">,</span> <span class="nx">tags</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">pos</span><span class="o">==</span><span class="nx">posts</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span><span class="nx">posts</span><span class="p">,</span> <span class="nx">tags</span><span class="p">});</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">'</span><span class="s1">SELECT label FROM TAG NATURAL JOIN POST_TAG NATURAL JOIN POST WHERE post_id=?</span><span class="dl">'</span><span class="p">,</span><span class="nx">posts</span><span class="p">[</span><span class="nx">pos</span><span class="p">].</span><span class="nx">post_id</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="nx">posts</span><span class="p">[</span><span class="nx">pos</span><span class="p">].</span><span class="nx">label</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="nx">getTags</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">posts</span><span class="p">,</span> <span class="nx">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">tags</span><span class="p">);</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>and the <code class="language-plaintext highlighter-rouge">index</code> method on the <code class="language-plaintext highlighter-rouge">HomeController.js</code> file, which takes care of all the logic for the home page, became</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">exports</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+  <span class="kd">let</span> <span class="nx">userId</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">userId</span>
+  <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">'</span><span class="s1">SELECT post_id, title, slug, date_created FROM POST ORDER BY date_created DESC</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">posts</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span>
+    <span class="nx">tags</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1">//query tags for each post id - uses recursion to iterate through posts and then render page</span>
+    <span class="nx">getTags</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">posts</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">tags</span><span class="p">);</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>I thought that was a clean way to solve the problem, but I’m sure people may very well use other means to accomplish this - and I hope I’m doing this the right way.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I plan to write more detailed descriptions on the projects I’m working on and the challenges I face along the way. I’ve been also working on a project using TypeScript and I could tell a lot of things about how the process of writing JS code became much easier with it. This is surely a good way to practice my communication skills as well as forcing me to explain the technical decisions I make while developing software.</p>
+
+  </div><a class="u-url" href="/blog/personal-blog-using-nodejs-express-and-mysql" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+   
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Weslley&#39;s blog</li><li><a class="u-email" href="mailto:w3slley.victor@gmail.com">w3slley.victor@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/w3slley"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">w3slley</span></a></li><li><a href="https://www.twitter.com/_w3slley"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">_w3slley</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This is a place where I share thoughts and ideas about software development, physics and science in general (among other things =D)!</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+<!--MathJax script -->
+    <script>
+    //script that renders inline latex commands using MathJax
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+  </body>
+
+</html>
