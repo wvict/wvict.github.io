@@ -1,5 +1,5 @@
 ---
-title: 'Personal blog using Node.Js, Express and MySQL'
+title: 'Personal blog using Node.js, Express and MySQL'
 layout: 'post'
 permalink: '/blog/:title'
 ---
