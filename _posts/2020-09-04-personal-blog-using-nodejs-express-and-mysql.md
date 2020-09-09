@@ -3,7 +3,7 @@ title: 'Personal blog using Node.js, Express and MySQL'
 layout: 'post'
 permalink: '/blog/:title'
 ---
-I recently finished a [personal blog website](https://w3slley-blog.herokuapp.com/), a project I'd been working on for a couple of months now. As with some of other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch).
+I recently finished a [personal blog website](https://w3slley-blog.herokuapp.com/), a project I've been working on for a couple of months now. As with some of other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch).
 
 Anyways, it's been a while since I wanted to create a place where I could share thoughts and ideas, combined with a place to display some of the stuff I work on both on software development but also in physics. And it took me a while since I've been busy with university and everything. But this summer (2020) I managed to get the time needed to finish this and also to work on some other projects - which I'll eventually talk about in the `projects` section. 
 
