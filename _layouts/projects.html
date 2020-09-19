@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<link rel='stylesheet' href="/assets/css/projects.css">
+<header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+<div class="post-content">
+  <article class="post">
+    {{content}}
+    <div class="projects-cards">
+      {% for project in page.projects %}
+        <div class="card">
+          <h1>{{project.title}}</h1>
+          <div class="image">
+            <img src="{{project.img_href}}">
+          </div>
+          <div class="description">
+            <p>{{project.description}}</p>
+            <a href="/projects/{{project.slug}}">Details</a>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </article>
+ </div>

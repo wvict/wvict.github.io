@@ -1,7 +1,37 @@
-@import "blog.css";
-
-header{
-	background: url('../images/background-projects.png');
-	background-size: cover;
-	height: 250px;
+.projects-cards{
+  display: flex;
+  flex-wrap: wrap;
+}
+.card{
+  width: 200px;
+  height: auto;
+  margin: 10px;
+  padding: 0 5px 15px 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.3);
+}
+.card h1{
+  font-size: 20px;
+  margin: 0;
+}
+.image{
+  width: 110px;
+  margin: 10px auto;
+}
+.image img{
+  width: 100%;
+}
+.description p{
+  font-size: 15px;
+  margin: 15px 0;
+}
+.description a{
+  color: white;
+  background-color: #2a7ae2;
+  padding:10px;
+  border-radius: 3px;
+}
+.description a:hover{
+  text-decoration: none;
+  background-color: rgba(42,122,226,.8);
 }
