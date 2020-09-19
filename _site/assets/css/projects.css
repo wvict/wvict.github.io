@@ -35,3 +35,13 @@
   text-decoration: none;
   background-color: rgba(42,122,226,.8);
 }
+
+@media screen and (max-width:500px){
+  .projects-cards{
+    display: block;
+  }
+  .card{
+    margin: 50px auto;
+    width: 65%;
+  }
+}

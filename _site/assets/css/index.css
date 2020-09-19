@@ -258,31 +258,32 @@ nav ul li a{
 .title{
     position: absolute;
     top: -2px;
-    font-size: 30px;
+    font-size: 25px;
     margin: 0;
 }
-.origami img{
+.item img{
+    margin-top: 30px;
     width: 50%;
 }
-.origami p{
+.item p{
     cursor: default;
 }
-
-.booked img{
-    width: 50%;
+.more-projects-btn{
+  margin: 50px auto;
+  width: 300px;
 }
-.booked p{
-    cursor: default;
+.more-projects-btn a{
+  text-decoration: none;
+  padding: 20px;
+  font-size: 25px;
+  color: white;
+  background-color:  rgba(0,0,0,.55);
+  border: 1px solid white;
+  border-radius: 40px;
+  transition: background-color .05s;
 }
-.entenda-mais{
-   margin-right: 0;
-}
-.entenda-mais img{
-    margin-top: 50px;
-    width: 40%;
-}
-.entenda-mais p{
-    cursor: default;
+.more-projects-btn a:hover{
+  background-color:  rgba(0,0,0,.35);
 }
 .contact {
   position: relative;
@@ -436,9 +437,12 @@ nav ul li a{
   .tech p{
     font-size: 20px;
   }
-
   .item{
     width: 200px !important;
 
+  }
+  .more-projects-btn{
+    width: 100%;
+    text-align: center;
   }
 }
