@@ -21,7 +21,7 @@ I used [MathJax](https://github.com/mathjax/MathJax) so that I could type equati
 
 ## Challenges
 
-One of the difficulties I had to do with fact that the `mysql` Node.Js module uses asynchronous callbacks after each query to the database. One of the tasks I had to implement was to display all tags for each blogpost in the index page. For that I needed to, of course, get all the tags for each post from the database.
+One of the difficulties I had had to do with fact that the `mysql` Node.Js module uses asynchronous callbacks after each query to the database. One of the tasks I had to implement was to display all tags for each blogpost in the index page. For that I needed to, of course, get all the tags for each post from the database.
 ![](https://imgur.com/ues5KvY.png)
 
  My initial idea was to add each array of tags into another array called `tags` and send this array to the handlebars view - since the size of the `tags` array will be equal to the size of the `posts` array (array of total posts on the database), they will exactly match and each post will be tagged with its correct tag.
