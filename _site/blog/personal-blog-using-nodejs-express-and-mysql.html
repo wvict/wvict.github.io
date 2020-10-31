@@ -71,7 +71,7 @@
 
 <h2 id="challenges">Challenges</h2>
 
-<p>One of the difficulties I had to do with fact that the <code class="language-plaintext highlighter-rouge">mysql</code> Node.Js module uses asynchronous callbacks after each query to the database. One of the tasks I had to implement was to display all tags for each blogpost in the index page. For that I needed to, of course, get all the tags for each post from the database.
+<p>One of the difficulties I had had to do with fact that the <code class="language-plaintext highlighter-rouge">mysql</code> Node.Js module uses asynchronous callbacks after each query to the database. One of the tasks I had to implement was to display all tags for each blogpost in the index page. For that I needed to, of course, get all the tags for each post from the database.
 <img src="https://imgur.com/ues5KvY.png" alt="" /></p>
 
 <p>My initial idea was to add each array of tags into another array called <code class="language-plaintext highlighter-rouge">tags</code> and send this array to the handlebars view - since the size of the <code class="language-plaintext highlighter-rouge">tags</code> array will be equal to the size of the <code class="language-plaintext highlighter-rouge">posts</code> array (array of total posts on the database), they will exactly match and each post will be tagged with its correct tag.</p>

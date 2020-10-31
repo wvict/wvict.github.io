@@ -7,9 +7,9 @@ permalink: /projects/covid-graph-generator
 
 **Technologies used**: Python, pdfminer, pandas, matplotlib
 
-This project has the goal of automating the process of updating tables and graphs on the Portugal's Covid-19 pandemic Wikipedia page. The developed Python script parses the Direção Geral de Saúde's website and gets from the PDF reports all the necessary information to produce/update graphs and tables on the Portugal Covid-19 Wikipedia Page.
+This project has the goal of automating the process of updating tables and graphs on the Portugal's Covid-19 pandemic Wikipedia page. In uncertain times like these the internet often becomes a "jungle" of misinformation. Collaborating with other people to share accurate and updated information from trusted national health authorities is my attempt to help make the internet a better place.
 
-To extract the data from the PDF file I used [pdfminer](https://github.com/euske/pdfminer). The data is then saved into a .csv file and later used for the creation of the charts and tables. These are now ready to be inserted into the `edit section` on the Wikipedia page. More information about the process of contributing to the Wikipedia page (both in english and in portuguese) can be obtained in the github repository.
+The developed Python script parses the Direção Geral de Saúde's website and gets from the PDF reports all the necessary information to produce/update graphs and tables on the Portugal Covid-19 Wikipedia Page. To extract the data from the PDF file I used [pdfminer](https://github.com/euske/pdfminer). The data is then saved into a .csv file and later used for the creation of the charts and tables. These are now ready to be inserted into the `edit section` on the Wikipedia page. More information about the process of contributing to the Wikipedia page (both in english and in portuguese) can be obtained in the github repository.
 
 # Example of charts
 
