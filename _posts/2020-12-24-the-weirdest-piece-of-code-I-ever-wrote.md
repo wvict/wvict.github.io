@@ -25,5 +25,5 @@ O(>=,11)o(l,'o');if(j%2!=0)y(22,m-4,'o');}}f++;T(6,u);T(11,l);X s="";
 f(k,w)s+=t[k];printf("%s\n",s.c_str());}}
 
 ``` 
-You can compile yourself and see what it does :D. Merry Christmas and happy hollidays!
+You can compile yourself and see what it does :D. Merry Christmas and happy holidays!
 
