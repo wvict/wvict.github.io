@@ -25,12 +25,11 @@ Podemos implementar nosso algoritimo trabalhando com o número em formato `Strin
 
 ```java
 public static int count(String num, int l, int r){
-	if(l >= r) return 0; 
-	if(num.charAt(l) == num.charAt(r)) 
+    if(l >= r) return 0; 
+    if(num.charAt(l) == num.charAt(r)) 
         return 0 + count(num,l+1,r-1,c);
-	else
-	    return 1 + Math.min(count(num,l+1,r), count(num,l,r-1)); 
-	
+    else
+        return 1 + Math.min(count(num,l+1,r), count(num,l,r-1)); 
 }
 ```
 
@@ -65,20 +64,19 @@ A função `main()` desse problema, com o método `count()` acima definido, fica
 
 ```java
 public static void main(String[] args){
-	Scanner stdin = new Scanner(System.in);
-	int n = stdin.nextInt();
-	for(int i=0;i<n;i++){
-	    String num = stdin.next();
-	    int L = num.length();
-	    //matrix that will store number of digits to add to number from position l to r
-	    int[][] c = new int[L][L];
-
-            //initializing matrix with unused values
-	    for(int k=0;k<L;k++)
-		for(int m=0;m<L;m++)
-		    c[k][m] = -1;
-	    System.out.println(count(num,0,L-1,c));
-	}
+    Scanner stdin = new Scanner(System.in);
+    int n = stdin.nextInt();
+    for(int i=0;i<n;i++){
+        String num = stdin.next();
+        int L = num.length();
+        //matrix that will store number of digits to add to number from position l to r
+        int[][] c = new int[L][L];
+        //initializing matrix with unused values
+        for(int k=0;k<L;k++)
+            for(int m=0;m<L;m++)
+                c[k][m] = -1;
+        System.out.println(count(num,0,L-1,c));
+    }
 }
 ``` 
 
