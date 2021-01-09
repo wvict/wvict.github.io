@@ -300,12 +300,24 @@ nav ul li a{
   font-size: 30px;
 }
 .email{
-  width: 100px;
+  width: 300px;
   margin: 0 auto;
+  text-align: center;
 
 }
 .email img{
+  width: 30%;
+}
+
+.email a{
+  text-decoration: none;
+  color: black;
   width: 100%;
+  text-align:center;
+}
+.email a:hover{
+  color: #262626;
+  text-decoration: underline;
 }
 
 .footer{
