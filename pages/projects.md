@@ -4,10 +4,10 @@ title: Projects
 permalink: /projects/
 
 projects:
- - title: Covid-19 graphs generator
-   slug: covid-graph-generator
+ - title: Covid-19 charts generator
+   slug: covid-charts-generator
    img_href: /assets/images/covid.svg
-   description: Tables/graphs generator for Portugal's Covid-19 Wikipedia page
+   description: Charts generator for Portugal's Covid-19 Wikipedia page
 
  - title: Origami
    slug: origami
