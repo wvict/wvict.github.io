@@ -15,10 +15,12 @@ The developed Python script parses the Direção Geral de Saúde's website and g
 
 ![](https://raw.githubusercontent.com/w3slley/covid19-portugal-wikipedia/master/images/summary.png)
 
+![](https://raw.githubusercontent.com/w3slley/covid19-portugal-wikipedia/master/images/total_cases.png)
+
 ![](https://raw.githubusercontent.com/w3slley/covid19-portugal-wikipedia/master/images/daily_cases.png)
 
 ![](https://raw.githubusercontent.com/w3slley/covid19-portugal-wikipedia/master/images/cases_age_gender.png)
 
 ![](https://raw.githubusercontent.com/w3slley/covid19-portugal-wikipedia/master/images/hospital_admitted.png)
 
-![](https://raw.githubusercontent.com/w3slley/covid19-portugal-wikipedia/master/images/total_recoveries.png)
+
