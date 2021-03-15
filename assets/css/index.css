@@ -267,7 +267,11 @@ nav ul li a{
     font-size: 25px;
     margin: 0;
 }
-.item img{
+.item a{
+  text-align: center;
+  width: 100%;
+}
+.item a img{
     margin-top: 30px;
     width: 50%;
 }
