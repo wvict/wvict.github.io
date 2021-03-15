@@ -239,12 +239,12 @@ nav ul li a{
 }
 .projects h1{
     color: white;
-    margin: 0;
+    margin-bottom: 20px;
 }
 .box{
     display: flex;
     justify-content: center;
-    padding: 50px;
+    padding: 15px;
 }
 
 .item{
