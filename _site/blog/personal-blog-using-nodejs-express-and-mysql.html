@@ -7,15 +7,15 @@
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Personal blog using Node.js, Express and MySQL" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="I recently finished a personal blog website, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch)." />
-<meta property="og:description" content="I recently finished a personal blog website, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch)." />
+<meta name="description" content="I recently finished a personal blog website, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on Heroku cloud platform." />
+<meta property="og:description" content="I recently finished a personal blog website, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on Heroku cloud platform." />
 <link rel="canonical" href="http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql" />
 <meta property="og:url" content="http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql" />
 <meta property="og:site_name" content="Weslley’s blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-09-04T00:00:00+01:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql","headline":"Personal blog using Node.js, Express and MySQL","dateModified":"2020-09-04T00:00:00+01:00","datePublished":"2020-09-04T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql"},"description":"I recently finished a personal blog website, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch).","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql","headline":"Personal blog using Node.js, Express and MySQL","dateModified":"2020-09-04T00:00:00+01:00","datePublished":"2020-09-04T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql"},"description":"I recently finished a personal blog website, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on Heroku cloud platform.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Weslley's blog" /></head>
 <link rel="shortcut icon" type="image/svg" href="/assets/images/logo.svg">
@@ -53,11 +53,11 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>I recently finished a <a href="https://w3slley-blog.herokuapp.com/">personal blog website</a>, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch).</p>
+    <p>I recently finished a <a href="https://w3slley-blog.herokuapp.com/">personal blog website</a>, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on Heroku cloud platform.</p>
 
 <p>Anyways, it’s been a while since I wanted to create a place where I could share thoughts and ideas, combined with a place to display some of the stuff I work on both on software development but also in physics. And it took me a while since I’ve been busy with university and everything. But this summer (2020) I managed to get the time needed to finish this and also to work on some other projects - which I’ll eventually talk about in the <code class="language-plaintext highlighter-rouge">projects</code> section.</p>
 
-<p>You could argue that one doesn’t need to develop a blog platform from scracth if they want to publish articles or blogposts online. But what I wanted to use this challenge (creating a blog) to learn more about Node.Js, MySQL, handlebars and others. And as an end result I would have a platform to share stuff on.</p>
+<p>You could argue that one doesn’t need to develop a blog platform from scracth if they want to publish articles or blogposts online. But what I wanted to use this as a challenge to learn more about Node.js, MySQL, handlebars and others. And as an end result I would have a platform to share stuff on.</p>
 
 <p>Right when I was developing the project I came across the static site generator Jekyll, which is a pretty useful tool for quickly setting up a personal blog. Since I wanted to continue using the <code class="language-plaintext highlighter-rouge">w3slley.github.io</code> domain name from Github and I don’t plan to buy a new one for now, I’m using Jekyll with Github Pages to host my current personal website. But in a near future I’ll get a domain name for myself and I’ll use the blog, taking advantage of the functionalities I developed there.</p>
 
@@ -65,13 +65,13 @@
 
 <h2 id="tech-stack-and-features">Tech stack and features</h2>
 
-<p>First I would like to talk about the tech stack I used. I utilized Node.Js and Express (the back-end tools I’m most comfortable with right now), handlebars for the template engine and MySQL - the latter was chosen to practice my skills in database design I learned last semester at university. Another thing worth pointing out is the fact that I used MVC from the very start, which made easier to manage the application when it started to get a little bit bigger, on top of all the modularity and compartmentalization that comes with it.</p>
+<p>First I would like to talk about the tech stack I used. I utilized Node.js and Express (the back-end tools I’m most comfortable with right now), handlebars for the template engine and MySQL - the latter was chosen to practice my skills in database design I learned last semester at university. Another thing worth pointing out is the fact that I used MVC from the very start, which made easier to manage the application when it started to get a little bit bigger, on top of all the modularity and compartmentalization that comes with it.</p>
 
 <p>I used <a href="https://github.com/mathjax/MathJax">MathJax</a> so that I could type equations and mathematical symbols (useful for posts where I talk about physics and maths) and also <a href="https://prismjs.com">Prism.Js</a> for the code highlighting. The posts can be written in markdown, making the author’s life easier, also taking advantage of the markdown code syntax (using backticks for inline code and tripple backticks for blocks of code) and other useful markdown commands. I also added a tag system where each post can be tagged with one or more labels and one can also click them and see all the posts with that particular tag, which is something the Jekyll blog doesn’t have (at least I didn’t bother to look up at the documentation to see how to implement something like this).</p>
 
 <h2 id="challenges">Challenges</h2>
 
-<p>One of the difficulties I had had to do with fact that the <code class="language-plaintext highlighter-rouge">mysql</code> Node.Js module uses asynchronous callbacks after each query to the database. One of the tasks I had to implement was to display all tags for each blogpost in the index page. For that I needed to, of course, get all the tags for each post from the database.
+<p>One of the difficulties I had had to do with fact that the <code class="language-plaintext highlighter-rouge">mysql</code> Node.js module uses asynchronous callbacks after each query to the database. One of the tasks I had to implement was to display all tags for each blogpost in the index page. For that I needed to, of course, get all the tags for each post from the database.
 <img src="https://imgur.com/ues5KvY.png" alt="" /></p>
 
 <p>My initial idea was to add each array of tags into another array called <code class="language-plaintext highlighter-rouge">tags</code> and send this array to the handlebars view - since the size of the <code class="language-plaintext highlighter-rouge">tags</code> array will be equal to the size of the <code class="language-plaintext highlighter-rouge">posts</code> array (array of total posts on the database), they will exactly match and each post will be tagged with its correct tag.</p>

@@ -1,73 +1,358 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-15T13:43:55+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Weslley’s blog</title><subtitle>This is a place where I share thoughts and ideas about software development, physics and science in general (among other things =D)!</subtitle><entry><title type="html">Problema do subarray contíguo de soma máxima</title><link href="http://localhost:4000/blog/problema-do-subarray-cont%C3%ADguo-de-soma-m%C3%A1xima" rel="alternate" type="text/html" title="Problema do subarray contíguo de soma máxima" /><published>2021-02-09T00:00:00+00:00</published><updated>2021-02-09T00:00:00+00:00</updated><id>http://localhost:4000/blog/problema-do-subarray-cont%C3%ADguo-de-soma-m%C3%A1xima</id><content type="html" xml:base="http://localhost:4000/blog/problema-do-subarray-cont%C3%ADguo-de-soma-m%C3%A1xima">&lt;p&gt;Em ciência dos computadores, o &lt;a href=&quot;https://en.wikipedia.org/wiki/Maximum_subarray_problem&quot;&gt;&lt;em&gt;problema do subarray contíguo de soma máxima&lt;/em&gt;&lt;/a&gt; é um problema clássico e pode ser resolvido utilizando várias tecnicas de algoritmos, incluindo-se nestas o &lt;em&gt;brute force&lt;/em&gt;, &lt;em&gt;divide and conquer&lt;/em&gt;, &lt;em&gt;dynamic programming&lt;/em&gt; e outras.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-21T15:58:04+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Weslley’s blog</title><subtitle>This is a place where I share thoughts and ideas about software development, physics and science in general (among other things =D)!</subtitle><entry><title type="html">The maximum subarray problem</title><link href="http://localhost:4000/blog/the-maximum-subarray-problem" rel="alternate" type="text/html" title="The maximum subarray problem" /><published>2021-03-21T00:00:00+00:00</published><updated>2021-03-21T00:00:00+00:00</updated><id>http://localhost:4000/blog/the-maximum-subarray-problem</id><content type="html" xml:base="http://localhost:4000/blog/the-maximum-subarray-problem">&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Maximum_subarray_problem&quot;&gt;maximum subarray problem&lt;/a&gt; is a classic problem in computer science and can be solved using a variety of algorithmic techniques. Among these techniques are &lt;em&gt;brute force&lt;/em&gt;, &lt;em&gt;divide and conquer&lt;/em&gt;, &lt;em&gt;dynamic programming&lt;/em&gt;, and others. The goal is to find a contiguous subarray with the largest sum within a given one-dimensional array $[a_1, a_2,…, a_n]$ of numbers.&lt;/p&gt;
 
-&lt;p&gt;O objectivo deste exercício é ter algoritmos de diferentes complexidades para um mesmo problema e ir verificando a sua eficiência temporal.&lt;/p&gt;
+&lt;p&gt;The main objective of this article is to present diferent algorithms with diferent time and space complexities which constitute a solution for this problem.&lt;/p&gt;
 
-&lt;h3 id=&quot;uma-primeira-solução-com-força-bruta-com-tempo-theta-n3&quot;&gt;Uma primeira solução com força bruta com tempo $\Theta (n^3)$&lt;/h3&gt;
+&lt;h3 id=&quot;an-initial-brute-force-solution-with-theta-n3&quot;&gt;An initial brute force solution with $\Theta (n^3)$&lt;/h3&gt;
 
-&lt;p&gt;Quais são todas as subsequências contíguas possíveis? Seja $v[]$ um array contendo a sequência e começado na posição 0. As sequências possíveis são então todos os subarrays $v[i..j]$ tal que  $0 \leq i \leq j \leq n$.&lt;/p&gt;
+&lt;p&gt;What are all the possible contiguous sequences possible? Let $v$ be an array containing a sequence of integers. Then, the possible sequences are all the subarrays $v[i:j]$ such that $0 \leq i \leq j &amp;lt; n$.&lt;/p&gt;
 
-&lt;p&gt;Uma solução exaustiva seria passar por todas estas subsequências e para cada uma delas calcular o valor da respectiva soma, escolhendo a melhor possível. Supondo que já temos a leitura feita para o array v[], uma maneira de fazer isto seria a indicada pelo código seguinte:&lt;/p&gt;
+&lt;p&gt;A brute force algorithm would be to go over all the possible subsequences and for each one calculate their sum, returning the greatest sum possible in the end. Let’s suppose we have the array $v$. Then one way to implement this would be:&lt;/p&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;  
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maximumSubarray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
+            &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;  
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;melhorando-a-solução-para-theta-n2&quot;&gt;Melhorando a solução para $\Theta (n^2)$&lt;/h3&gt;
+&lt;h3 id=&quot;improving-the-solution-to-theta-n2&quot;&gt;Improving the solution to $\Theta (n^2)$&lt;/h3&gt;
 
-&lt;p&gt;Intuitivamente, olhando para o código anterior podemos notar que em cada soma estamos a repetir muitos cálculos. Quando passamos do cálculo de soma(v[i..j]) para soma(v[i..j+1]) não precisamos de voltar a recalcular tudo (começando novamente em i, e basta-nos adicionar v[j+1] à soma anterior!&lt;/p&gt;
+&lt;p&gt;Intuitively, looking at the previous code you can see that in each sum we are repeating a lot of calculations. When we go from calculating $sum(v[i:j])$ to $sum(v[i:j+1])$ we don’t need to recalculate everything again. In other words, $sum(v[i:j+1]) = sum(v[i:j]) + v[j+1])$. With that we can remove the third loop we had before:&lt;/p&gt;
 
-&lt;p&gt;Dito de outro modo, soma(v[i..j+1]) = soma(v[i..j]) + v[j+1]. Podemos utilizar isto para remover o terceiro ciclo com k que tínhamos na solução anterior.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;  
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maximumSubarray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;  
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;melhorando-ainda-mais-para-theta-n&quot;&gt;Melhorando ainda mais para $\Theta (n)$&lt;/h3&gt;
+&lt;h3 id=&quot;improving-even-more-to-theta-n&quot;&gt;Improving even more to $\Theta (n)$&lt;/h3&gt;
 
-&lt;p&gt;Uma solução quadrática ainda não é suficiente e temos de a melhorar para tempo linear. Para isso vamos usar o &lt;a href=&quot;https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane%27s_algorithm_%28Algorithm_3:_Dynamic_Programming%29&quot;&gt;&lt;em&gt;algoritmo de Kadane&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A quadratic solution is still not enough for us :). To get to the linear solution, we need to use &lt;a href=&quot;https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane's_algorithm&quot;&gt;&lt;em&gt;Kadane’s algorithm&lt;/em&gt;&lt;/a&gt;. Let’s consider an array $best$ with the same length as $v$. Then, $best[i]$ represents the subarray with maximum sum which ends at position $i$. It’s easy to see that $best[0] = v[0]$. If we know $best[i]$, how can we calculate $best[i+1]$?&lt;/p&gt;
 
-&lt;p&gt;Considere que best(i) representa o melhor subarray que termina na posição i. Sabemos como “caso base” que best(0) = v[0] (é o único subarray possível que termina na primeira posição).&lt;/p&gt;
+&lt;p&gt;Let’s go over an example. Imagine our array $v$ is $v = [4, -2, 1, 5]$. Then,&lt;/p&gt;
 
-&lt;p&gt;Se soubermos o valor de best(i), como calcular o valor de best(i+1)?&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$v[i]$&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;-2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$best[i]$&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://imgur.com/KsIAYAU.png&quot; alt=&quot;Descrição do algorítimo de Kadane&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Now, we know that the best sum up until position $0$ of $v$ is of course $v[0] = 4$. So we have&lt;/p&gt;
 
-&lt;p&gt;Uma solução, utilizando o algorítimo de Kadane, é:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$v[i]$&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;-2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$best[i]$&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//base case&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&amp;gt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//if positive, add sequence item to sum&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//if negative, the sum is less then sequence item, so don't add&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+&lt;p&gt;Now want to calculate $best[1]$. What we are trying to find is the greatest sum of contiguous elements in $v$ up until position 1. But this value is the current value of $v$ plus the greatest sum up until the previous position. In other words, $best[1] = best[0] + v[1] = 4 + (-2) = 2$. This means 2 is the greatest sum of contiguous elements up until position 1 on array $v$. Then,&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$v[i]$&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;-2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$best[i]$&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;For $best[2]$ we do the same thing: the maximum sum up until $i = 2$ on array $v$ is simply $best[1] + v[2]$. In this case, $best[2] = best[1] + v[2] = 2 + 1 = 3$.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$v[i]$&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;-2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$best[i]$&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;And at last, $best[3] = best[2] + v[3] = 3 + 5 = 8$.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$v[i]$&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;-2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$best[i]$&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;By now you probably noticed the pattern. To fill out the $best$ array, we say that $best[0] = v[0]$ and that $best[i] = best[i-1] + v[i]$. Then, the maximum subarray sum of contiguous elements is found by obtaining the greatest element of the array $best$. In our case, this value is 8.&lt;/p&gt;
+
+&lt;p&gt;But there is a catch. What if $best[i]$ is a negative number? Let’s use another example with $v = [-5, 2, -3, 4]$. As usual, $best[0] = v[0] = -5$.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$v[i]$&lt;/td&gt;
+      &lt;td&gt;-5&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;-3&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$best[i]$&lt;/td&gt;
+      &lt;td&gt;-5&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Now, what is the greatest sum of contiguous elements of $v$ up position 1? If we try to do the samething as before by summing $best[0] + v[1]$, we get $best[1] = -3$. But that’s wrong, since $v[1]$ alone is greater than -3. So in this case, $best[1] = 2$. That means that if $best[i-1] &amp;lt; 0$, we don’t sum it with $v[i]$ but leave it as it is. Continuing with our example,&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$v[i]$&lt;/td&gt;
+      &lt;td&gt;-5&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;-3&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$best[i]$&lt;/td&gt;
+      &lt;td&gt;-5&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Now, the best sum up to position $2$ is $best[1] + v[2] = 2 + (-3) = -1$.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$v[i]$&lt;/td&gt;
+      &lt;td&gt;-5&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;-3&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$best[i]$&lt;/td&gt;
+      &lt;td&gt;-5&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;-1&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Again, $best[2]$ is also negative. Therefore, the greatest sum on $v$ up until position $3$ is $v[3] = 4$.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$v[i]$&lt;/td&gt;
+      &lt;td&gt;-5&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;-3&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$best[i]$&lt;/td&gt;
+      &lt;td&gt;-5&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;-1&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;And the maximum sum of contiguous elements in v is $max(best) = 4$.&lt;/p&gt;
+
+&lt;p&gt;And this is Kadane’s algorithm:&lt;/p&gt;
+
+\[best[0] = v[0]\]
+
+\[best[i] = 
+    \begin{cases}
+        best[i-1] + v[i],  &amp;amp; \text{if } best[i] &amp;gt; 0\\
+        v[i],              &amp;amp; \text{if } best[i] &amp;lt; 0
+    \end{cases}\]
+
+&lt;p&gt;Let’s implement this idea in Java:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maximumSubarray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//O(n)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//if positive, add sequence item to sum&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&amp;gt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//if negative, the sum is less then sequence item, so don't add&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//initially assume the max sum is the first int on array best&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//O(n)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//initially assume the max sum is the first int on array best&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Since we only traverse the array $v$ once to fill in the $best$ array and then loop through it to fint its greatest element, we end up with a linear complexity $O(n + n) = O(2n) = O(n)$, where $n$ is the length of $v$.&lt;/p&gt;
 
-&lt;p&gt;No final de tudo, o melhor subarray é o melhor valor de $best(i)$ para um qualquer $i$ (o melhor pode terminar em qualquer posição).&lt;/p&gt;
-
-&lt;p&gt;Para calcular isto basta-nos percorrer uma única vez o array v[] e em cada iteração calcular em tempo constante o valor da melhor soma a terminar na posição actual usando a melhor soma a terminar na posição anterior. A complexidade temporal fica portanto linear.&lt;/p&gt;</content><author><name></name></author><summary type="html">Em ciência dos computadores, o problema do subarray contíguo de soma máxima é um problema clássico e pode ser resolvido utilizando várias tecnicas de algoritmos, incluindo-se nestas o brute force, divide and conquer, dynamic programming e outras.</summary></entry><entry><title type="html">The weirdest piece of code I ever wrote</title><link href="http://localhost:4000/blog/the-weirdest-piece-of-code-I-ever-wrote" rel="alternate" type="text/html" title="The weirdest piece of code I ever wrote" /><published>2020-12-24T00:00:00+00:00</published><updated>2020-12-24T00:00:00+00:00</updated><id>http://localhost:4000/blog/the-weirdest-piece-of-code-I-ever-wrote</id><content type="html" xml:base="http://localhost:4000/blog/the-weirdest-piece-of-code-I-ever-wrote">&lt;p&gt;This is by far the weirdest code I ever wrote. Well, at least it was intentional: I made sure it was as bad as it could be since I wanted to write a solution to a problem using the smallest program possible (size wise). So readibility was not at all the goal here! And the resulting code solved the problem using $589$ bytes!&lt;/p&gt;
+&lt;p&gt;Hopefully after these examples you gained a more detail perception on the maximum subarray problem as well as with using different ideas to decrease the time complexities of algorithms.&lt;/p&gt;</content><author><name></name></author><summary type="html">The maximum subarray problem is a classic problem in computer science and can be solved using a variety of algorithmic techniques. Among these techniques are brute force, divide and conquer, dynamic programming, and others. The goal is to find a contiguous subarray with the largest sum within a given one-dimensional array $[a_1, a_2,…, a_n]$ of numbers.</summary></entry><entry><title type="html">The weirdest piece of code I ever wrote</title><link href="http://localhost:4000/blog/the-weirdest-piece-of-code-I-ever-wrote" rel="alternate" type="text/html" title="The weirdest piece of code I ever wrote" /><published>2020-12-24T00:00:00+00:00</published><updated>2020-12-24T00:00:00+00:00</updated><id>http://localhost:4000/blog/the-weirdest-piece-of-code-I-ever-wrote</id><content type="html" xml:base="http://localhost:4000/blog/the-weirdest-piece-of-code-I-ever-wrote">&lt;p&gt;This is by far the weirdest code I ever wrote. Well, at least it was intentional: I made sure it was as bad as it could be since I wanted to write a solution to a problem using the smallest program possible (size wise). So readibility was not at all the goal here! And the resulting code solved the problem using $589$ bytes!&lt;/p&gt;
 
 &lt;p&gt;I had a lot of fun doing this though. Anyways, here is the code (it was written in C++):&lt;/p&gt;
 &lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
@@ -157,11 +442,11 @@
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Com a explicação deste (excelente) exercício é possível ver o motivo pelo qual DP é uma ferramenta bastante útil e versátil na solução de problemas de optimização.&lt;/p&gt;</content><author><name></name></author><summary type="html">Em pleno espírito natalino, hoje resolvi fazer algo diferente: escrever um artigo em português :D! Neste post eu vou discutir um problema bastante interessante dado numa das cadeiras da universidade (Desenho e Análise de Algorítimos 20/21).</summary></entry><entry><title type="html">Personal blog using Node.js, Express and MySQL</title><link href="http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql" rel="alternate" type="text/html" title="Personal blog using Node.js, Express and MySQL" /><published>2020-09-04T00:00:00+01:00</published><updated>2020-09-04T00:00:00+01:00</updated><id>http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql</id><content type="html" xml:base="http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql">&lt;p&gt;I recently finished a &lt;a href=&quot;https://w3slley-blog.herokuapp.com/&quot;&gt;personal blog website&lt;/a&gt;, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch).&lt;/p&gt;
+&lt;p&gt;Com a explicação deste (excelente) exercício é possível ver o motivo pelo qual DP é uma ferramenta bastante útil e versátil na solução de problemas de optimização.&lt;/p&gt;</content><author><name></name></author><summary type="html">Em pleno espírito natalino, hoje resolvi fazer algo diferente: escrever um artigo em português :D! Neste post eu vou discutir um problema bastante interessante dado numa das cadeiras da universidade (Desenho e Análise de Algorítimos 20/21).</summary></entry><entry><title type="html">Personal blog using Node.js, Express and MySQL</title><link href="http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql" rel="alternate" type="text/html" title="Personal blog using Node.js, Express and MySQL" /><published>2020-09-04T00:00:00+01:00</published><updated>2020-09-04T00:00:00+01:00</updated><id>http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql</id><content type="html" xml:base="http://localhost:4000/blog/personal-blog-using-nodejs-express-and-mysql">&lt;p&gt;I recently finished a &lt;a href=&quot;https://w3slley-blog.herokuapp.com/&quot;&gt;personal blog website&lt;/a&gt;, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on Heroku cloud platform.&lt;/p&gt;
 
 &lt;p&gt;Anyways, it’s been a while since I wanted to create a place where I could share thoughts and ideas, combined with a place to display some of the stuff I work on both on software development but also in physics. And it took me a while since I’ve been busy with university and everything. But this summer (2020) I managed to get the time needed to finish this and also to work on some other projects - which I’ll eventually talk about in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;projects&lt;/code&gt; section.&lt;/p&gt;
 
-&lt;p&gt;You could argue that one doesn’t need to develop a blog platform from scracth if they want to publish articles or blogposts online. But what I wanted to use this challenge (creating a blog) to learn more about Node.Js, MySQL, handlebars and others. And as an end result I would have a platform to share stuff on.&lt;/p&gt;
+&lt;p&gt;You could argue that one doesn’t need to develop a blog platform from scracth if they want to publish articles or blogposts online. But what I wanted to use this as a challenge to learn more about Node.js, MySQL, handlebars and others. And as an end result I would have a platform to share stuff on.&lt;/p&gt;
 
 &lt;p&gt;Right when I was developing the project I came across the static site generator Jekyll, which is a pretty useful tool for quickly setting up a personal blog. Since I wanted to continue using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;w3slley.github.io&lt;/code&gt; domain name from Github and I don’t plan to buy a new one for now, I’m using Jekyll with Github Pages to host my current personal website. But in a near future I’ll get a domain name for myself and I’ll use the blog, taking advantage of the functionalities I developed there.&lt;/p&gt;
 
@@ -169,13 +454,13 @@
 
 &lt;h2 id=&quot;tech-stack-and-features&quot;&gt;Tech stack and features&lt;/h2&gt;
 
-&lt;p&gt;First I would like to talk about the tech stack I used. I utilized Node.Js and Express (the back-end tools I’m most comfortable with right now), handlebars for the template engine and MySQL - the latter was chosen to practice my skills in database design I learned last semester at university. Another thing worth pointing out is the fact that I used MVC from the very start, which made easier to manage the application when it started to get a little bit bigger, on top of all the modularity and compartmentalization that comes with it.&lt;/p&gt;
+&lt;p&gt;First I would like to talk about the tech stack I used. I utilized Node.js and Express (the back-end tools I’m most comfortable with right now), handlebars for the template engine and MySQL - the latter was chosen to practice my skills in database design I learned last semester at university. Another thing worth pointing out is the fact that I used MVC from the very start, which made easier to manage the application when it started to get a little bit bigger, on top of all the modularity and compartmentalization that comes with it.&lt;/p&gt;
 
 &lt;p&gt;I used &lt;a href=&quot;https://github.com/mathjax/MathJax&quot;&gt;MathJax&lt;/a&gt; so that I could type equations and mathematical symbols (useful for posts where I talk about physics and maths) and also &lt;a href=&quot;https://prismjs.com&quot;&gt;Prism.Js&lt;/a&gt; for the code highlighting. The posts can be written in markdown, making the author’s life easier, also taking advantage of the markdown code syntax (using backticks for inline code and tripple backticks for blocks of code) and other useful markdown commands. I also added a tag system where each post can be tagged with one or more labels and one can also click them and see all the posts with that particular tag, which is something the Jekyll blog doesn’t have (at least I didn’t bother to look up at the documentation to see how to implement something like this).&lt;/p&gt;
 
 &lt;h2 id=&quot;challenges&quot;&gt;Challenges&lt;/h2&gt;
 
-&lt;p&gt;One of the difficulties I had had to do with fact that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mysql&lt;/code&gt; Node.Js module uses asynchronous callbacks after each query to the database. One of the tasks I had to implement was to display all tags for each blogpost in the index page. For that I needed to, of course, get all the tags for each post from the database.
+&lt;p&gt;One of the difficulties I had had to do with fact that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mysql&lt;/code&gt; Node.js module uses asynchronous callbacks after each query to the database. One of the tasks I had to implement was to display all tags for each blogpost in the index page. For that I needed to, of course, get all the tags for each post from the database.
 &lt;img src=&quot;https://imgur.com/ues5KvY.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;My initial idea was to add each array of tags into another array called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tags&lt;/code&gt; and send this array to the handlebars view - since the size of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tags&lt;/code&gt; array will be equal to the size of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;posts&lt;/code&gt; array (array of total posts on the database), they will exactly match and each post will be tagged with its correct tag.&lt;/p&gt;
@@ -230,4 +515,4 @@
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;I plan to write more detailed descriptions on the projects I’m working on and the challenges I face along the way. I’ve been also working on a project using TypeScript and I could tell a lot of things about how the process of writing JS code became much easier with it. This is surely a good way to practice my communication skills as well as forcing me to explain the technical decisions I make while developing software.&lt;/p&gt;</content><author><name></name></author><summary type="html">I recently finished a personal blog website, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on heroku and used the JawsDB add-on for the database (I was having problems with ClearDB so I decided to switch).</summary></entry><entry><title type="html">Created A Blog</title><link href="http://localhost:4000/blog/created-a-blog" rel="alternate" type="text/html" title="Created A Blog" /><published>2020-08-20T00:00:00+01:00</published><updated>2020-08-20T00:00:00+01:00</updated><id>http://localhost:4000/blog/created-a-blog</id><content type="html" xml:base="http://localhost:4000/blog/created-a-blog">&lt;p&gt;I just created a blog using the static site generator Jekyll (which makes really easy to set up something like this). I’ll use Jekyll until I manage to switch to the website/blog I’m in the process of finishing up (using Node.Js and MySQL - also having syntax highlighing and supporting MathJax). In here I plan to share thoughts and ideas related to software development, computer science, physics, among other things. If you think that’s cool, stay tuned.&lt;/p&gt;</content><author><name></name></author><summary type="html">I just created a blog using the static site generator Jekyll (which makes really easy to set up something like this). I’ll use Jekyll until I manage to switch to the website/blog I’m in the process of finishing up (using Node.Js and MySQL - also having syntax highlighing and supporting MathJax). In here I plan to share thoughts and ideas related to software development, computer science, physics, among other things. If you think that’s cool, stay tuned.</summary></entry></feed>
+&lt;p&gt;I plan to write more detailed descriptions on the projects I’m working on and the challenges I face along the way. I’ve been also working on a project using TypeScript and I could tell a lot of things about how the process of writing JS code became much easier with it. This is surely a good way to practice my communication skills as well as forcing me to explain the technical decisions I make while developing software.&lt;/p&gt;</content><author><name></name></author><summary type="html">I recently finished a personal blog website, a project I’ve been working on for a couple of months now. As with some of my other projects, I deployed it on Heroku cloud platform.</summary></entry><entry><title type="html">Created A Blog</title><link href="http://localhost:4000/blog/created-a-blog" rel="alternate" type="text/html" title="Created A Blog" /><published>2020-08-20T00:00:00+01:00</published><updated>2020-08-20T00:00:00+01:00</updated><id>http://localhost:4000/blog/created-a-blog</id><content type="html" xml:base="http://localhost:4000/blog/created-a-blog">&lt;p&gt;I just created a blog using the static site generator Jekyll (which makes really easy to set up something like this). I’ll use Jekyll until I manage to switch to the website/blog I’m in the process of finishing up (using Node.Js and MySQL - also having syntax highlighing and supporting MathJax). In here I plan to share thoughts and ideas related to software development, computer science, physics, among other things. If you think that’s cool, stay tuned.&lt;/p&gt;</content><author><name></name></author><summary type="html">I just created a blog using the static site generator Jekyll (which makes really easy to set up something like this). I’ll use Jekyll until I manage to switch to the website/blog I’m in the process of finishing up (using Node.Js and MySQL - also having syntax highlighing and supporting MathJax). In here I plan to share thoughts and ideas related to software development, computer science, physics, among other things. If you think that’s cool, stay tuned.</summary></entry></feed>
