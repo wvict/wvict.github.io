@@ -34,6 +34,11 @@ projects:
    img_href: /assets/images/entenda-mais.png
    description: Development of a website for the science communitation project Entenda Mais
 
+ - title: Dominoes Web
+   slug: dominoes-web
+   img_href: /assets/images/domino.svg
+   description: Development of the game of dominoes on the web
+
  - title: Type
    slug: type
    img_href: /assets/images/type.svg
