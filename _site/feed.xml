@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="personal-website/feed.xml" rel="self" type="application/atom+xml" /><link href="personal-website/" rel="alternate" type="text/html" /><updated>2021-03-22T11:30:02+00:00</updated><id>personal-website/feed.xml</id><title type="html">Weslley’s blog</title><subtitle>This is a place where I share thoughts and ideas about software development, physics and science in general (among other things =D)!</subtitle><entry><title type="html">The maximum subarray problem</title><link href="personal-website/blog/the-maximum-subarray-problem" rel="alternate" type="text/html" title="The maximum subarray problem" /><published>2021-03-21T00:00:00+00:00</published><updated>2021-03-21T00:00:00+00:00</updated><id>personal-website/blog/the-maximum-subarray-problem</id><content type="html" xml:base="personal-website/blog/the-maximum-subarray-problem">&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Maximum_subarray_problem&quot;&gt;maximum subarray problem&lt;/a&gt; is a classic problem in computer science and can be solved using a variety of algorithmic techniques. Among these techniques are &lt;em&gt;brute force&lt;/em&gt;, &lt;em&gt;divide and conquer&lt;/em&gt;, &lt;em&gt;dynamic programming&lt;/em&gt;, and others. The goal is to find a contiguous subarray with the largest sum within a given one-dimensional array $[a_1, a_2,…, a_n]$ of numbers.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="personal-website/feed.xml" rel="self" type="application/atom+xml" /><link href="personal-website/" rel="alternate" type="text/html" /><updated>2021-03-22T13:03:08+00:00</updated><id>personal-website/feed.xml</id><title type="html">Weslley’s blog</title><subtitle>This is a place where I share thoughts and ideas about software development, physics and science in general (among other things =D)!</subtitle><entry><title type="html">The maximum subarray problem</title><link href="personal-website/blog/the-maximum-subarray-problem" rel="alternate" type="text/html" title="The maximum subarray problem" /><published>2021-03-21T00:00:00+00:00</published><updated>2021-03-21T00:00:00+00:00</updated><id>personal-website/blog/the-maximum-subarray-problem</id><content type="html" xml:base="personal-website/blog/the-maximum-subarray-problem">&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Maximum_subarray_problem&quot;&gt;maximum subarray problem&lt;/a&gt; is a classic problem in computer science and can be solved using a variety of algorithmic techniques. Among these techniques are &lt;em&gt;brute force&lt;/em&gt;, &lt;em&gt;divide and conquer&lt;/em&gt;, &lt;em&gt;dynamic programming&lt;/em&gt;, and others. The goal is to find a contiguous subarray with the largest sum within a given one-dimensional array $[a_1, a_2,…, a_n]$ of numbers.&lt;/p&gt;
 
-&lt;p&gt;The main objective of this article is to present diferent algorithms with diferent time and space complexities which constitute a solution for this problem.&lt;/p&gt;
+&lt;p&gt;The main objective of this article is to present diferent algorithms with diferent time complexities which constitute a solution for this problem.&lt;/p&gt;
 
 &lt;h3 id=&quot;an-initial-brute-force-solution-with-theta-n3&quot;&gt;An initial brute force solution with $\Theta (n^3)$&lt;/h3&gt;
 
-&lt;p&gt;What are all the possible contiguous sequences possible? Let $v$ be an array containing a sequence of integers. Then, the possible sequences are all the subarrays $v[i:j]$ such that $0 \leq i \leq j &amp;lt; n$.&lt;/p&gt;
+&lt;p&gt;What are all the possible contiguous sequences? Let $v$ be an array containing a sequence of integers. Then, the possible sequences are all the subarrays $v[i:j]$ such that $0 \leq i \leq j &amp;lt; n$.&lt;/p&gt;
 
 &lt;p&gt;A brute force algorithm would be to go over all the possible subsequences and for each one calculate their sum, returning the greatest sum possible in the end. Let’s suppose we have the array $v$. Then one way to implement this would be:&lt;/p&gt;
 
@@ -195,7 +195,7 @@
 
 &lt;p&gt;By now you probably noticed the pattern. To fill out the $best$ array, we say that $best[0] = v[0]$ and that $best[i] = best[i-1] + v[i]$. Then, the maximum subarray sum of contiguous elements is found by obtaining the greatest element of the array $best$. In our case, this value is 8.&lt;/p&gt;
 
-&lt;p&gt;But there is a catch. What if $best[i]$ is a negative number? Let’s use another example with $v = [-5, 2, -3, 4]$. As usual, $best[0] = v[0] = -5$.&lt;/p&gt;
+&lt;p&gt;But there is a catch. What if $best[i-1]$ is a negative number? Let’s use another example with $v = [-5, 2, -3, 4]$. As usual, $best[0] = v[0] = -5$.&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -323,8 +323,8 @@
 
 \[best[i] = 
     \begin{cases}
-        best[i-1] + v[i],  &amp;amp; \text{if } best[i] &amp;gt; 0\\
-        v[i],              &amp;amp; \text{if } best[i] &amp;lt; 0
+        best[i-1] + v[i],  &amp;amp; \text{if } best[i-1] &amp;gt; 0\\
+        v[i],              &amp;amp; \text{if } best[i-1] &amp;lt; 0
     \end{cases}\]
 
 &lt;p&gt;Let’s implement this idea in Java:&lt;/p&gt;
@@ -350,7 +350,7 @@
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Since we only traverse the array $v$ once to fill in the $best$ array and then loop through it to fint its greatest element, we end up with a linear complexity $O(n + n) = O(2n) = O(n)$, where $n$ is the length of $v$.&lt;/p&gt;
+&lt;p&gt;Since we only traverse the array $v$ once to fill in the $best$ array and then loop through it to find its greatest element, we end up with a linear complexity $O(n + n) = O(2n) = O(n)$, where $n$ is the length of the array $v$.&lt;/p&gt;
 
 &lt;p&gt;Hopefully after these examples you gained a more detail perception on the maximum subarray problem as well as with using different ideas to decrease the time complexities of algorithms.&lt;/p&gt;</content><author><name></name></author><summary type="html">The maximum subarray problem is a classic problem in computer science and can be solved using a variety of algorithmic techniques. Among these techniques are brute force, divide and conquer, dynamic programming, and others. The goal is to find a contiguous subarray with the largest sum within a given one-dimensional array $[a_1, a_2,…, a_n]$ of numbers.</summary></entry><entry><title type="html">The weirdest piece of code I ever wrote</title><link href="personal-website/blog/the-weirdest-piece-of-code-I-ever-wrote" rel="alternate" type="text/html" title="The weirdest piece of code I ever wrote" /><published>2020-12-24T00:00:00+00:00</published><updated>2020-12-24T00:00:00+00:00</updated><id>personal-website/blog/the-weirdest-piece-of-code-I-ever-wrote</id><content type="html" xml:base="personal-website/blog/the-weirdest-piece-of-code-I-ever-wrote">&lt;p&gt;This is by far the weirdest code I ever wrote. Well, at least it was intentional: I made sure it was as bad as it could be since I wanted to write a solution to a problem using the smallest program possible (size wise). So readibility was not at all the goal here! And the resulting code solved the problem using $589$ bytes!&lt;/p&gt;
 

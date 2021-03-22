@@ -67,11 +67,11 @@ if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNo
   <div class="post-content e-content" itemprop="articleBody">
     <p>The <a href="https://en.wikipedia.org/wiki/Maximum_subarray_problem">maximum subarray problem</a> is a classic problem in computer science and can be solved using a variety of algorithmic techniques. Among these techniques are <em>brute force</em>, <em>divide and conquer</em>, <em>dynamic programming</em>, and others. The goal is to find a contiguous subarray with the largest sum within a given one-dimensional array $[a_1, a_2,…, a_n]$ of numbers.</p>
 
-<p>The main objective of this article is to present diferent algorithms with diferent time and space complexities which constitute a solution for this problem.</p>
+<p>The main objective of this article is to present diferent algorithms with diferent time complexities which constitute a solution for this problem.</p>
 
 <h3 id="an-initial-brute-force-solution-with-theta-n3">An initial brute force solution with $\Theta (n^3)$</h3>
 
-<p>What are all the possible contiguous sequences possible? Let $v$ be an array containing a sequence of integers. Then, the possible sequences are all the subarrays $v[i:j]$ such that $0 \leq i \leq j &lt; n$.</p>
+<p>What are all the possible contiguous sequences? Let $v$ be an array containing a sequence of integers. Then, the possible sequences are all the subarrays $v[i:j]$ such that $0 \leq i \leq j &lt; n$.</p>
 
 <p>A brute force algorithm would be to go over all the possible subsequences and for each one calculate their sum, returning the greatest sum possible in the end. Let’s suppose we have the array $v$. Then one way to implement this would be:</p>
 
@@ -262,7 +262,7 @@ if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNo
 
 <p>By now you probably noticed the pattern. To fill out the $best$ array, we say that $best[0] = v[0]$ and that $best[i] = best[i-1] + v[i]$. Then, the maximum subarray sum of contiguous elements is found by obtaining the greatest element of the array $best$. In our case, this value is 8.</p>
 
-<p>But there is a catch. What if $best[i]$ is a negative number? Let’s use another example with $v = [-5, 2, -3, 4]$. As usual, $best[0] = v[0] = -5$.</p>
+<p>But there is a catch. What if $best[i-1]$ is a negative number? Let’s use another example with $v = [-5, 2, -3, 4]$. As usual, $best[0] = v[0] = -5$.</p>
 
 <table>
   <thead>
@@ -390,8 +390,8 @@ if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNo
 
 \[best[i] = 
     \begin{cases}
-        best[i-1] + v[i],  &amp; \text{if } best[i] &gt; 0\\
-        v[i],              &amp; \text{if } best[i] &lt; 0
+        best[i-1] + v[i],  &amp; \text{if } best[i-1] &gt; 0\\
+        v[i],              &amp; \text{if } best[i-1] &lt; 0
     \end{cases}\]
 
 <p>Let’s implement this idea in Java:</p>
@@ -417,7 +417,7 @@ if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNo
     <span class="k">return</span> <span class="n">maxSum</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
-<p>Since we only traverse the array $v$ once to fill in the $best$ array and then loop through it to fint its greatest element, we end up with a linear complexity $O(n + n) = O(2n) = O(n)$, where $n$ is the length of $v$.</p>
+<p>Since we only traverse the array $v$ once to fill in the $best$ array and then loop through it to find its greatest element, we end up with a linear complexity $O(n + n) = O(2n) = O(n)$, where $n$ is the length of the array $v$.</p>
 
 <p>Hopefully after these examples you gained a more detail perception on the maximum subarray problem as well as with using different ideas to decrease the time complexities of algorithms.</p>
 

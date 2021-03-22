@@ -88,7 +88,7 @@ And at last, $best[3] = best[2] + v[3] = 3 + 5 = 8$.
 
 By now you probably noticed the pattern. To fill out the $best$ array, we say that $best[0] = v[0]$ and that $best[i] = best[i-1] + v[i]$. Then, the maximum subarray sum of contiguous elements is found by obtaining the greatest element of the array $best$. In our case, this value is 8.
 
-But there is a catch. What if $best[i]$ is a negative number? Let's use another example with $v = [-5, 2, -3, 4]$. As usual, $best[0] = v[0] = -5$.
+But there is a catch. What if $best[i-1]$ is a negative number? Let's use another example with $v = [-5, 2, -3, 4]$. As usual, $best[0] = v[0] = -5$.
 
 | i       | 0  | 1 | 2 | 3 |
 |---------|----|---|---|---|
@@ -126,8 +126,8 @@ $$
 
 $$ best[i] = 
     \begin{cases}
-        best[i-1] + v[i],  & \text{if } best[i] > 0\\
-        v[i],              & \text{if } best[i] < 0
+        best[i-1] + v[i],  & \text{if } best[i-1] > 0\\
+        v[i],              & \text{if } best[i-1] < 0
     \end{cases}
 $$
 
