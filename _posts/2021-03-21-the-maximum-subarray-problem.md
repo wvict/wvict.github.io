@@ -5,12 +5,12 @@ permalink: '/blog/:title'
 ---
 The [maximum subarray problem](https://en.wikipedia.org/wiki/Maximum_subarray_problem) is a classic problem in computer science and can be solved using a variety of algorithmic techniques. Among these techniques are *brute force*, *divide and conquer*, *dynamic programming*, and others. The goal is to find a contiguous subarray with the largest sum within a given one-dimensional array $[a_1, a_2,..., a_n]$ of numbers.
 
-The main objective of this article is to present diferent algorithms with diferent time and space complexities which constitute a solution for this problem.
+The main objective of this article is to present diferent algorithms with diferent time complexities which constitute a solution for this problem.
 
 
 ### An initial brute force solution with $\Theta (n^3)$
 
-What are all the possible contiguous sequences possible? Let $v$ be an array containing a sequence of integers. Then, the possible sequences are all the subarrays $v[i:j]$ such that $0 \leq i \leq j < n$.
+What are all the possible contiguous sequences? Let $v$ be an array containing a sequence of integers. Then, the possible sequences are all the subarrays $v[i:j]$ such that $0 \leq i \leq j < n$.
 
 A brute force algorithm would be to go over all the possible subsequences and for each one calculate their sum, returning the greatest sum possible in the end. Let's suppose we have the array $v$. Then one way to implement this would be:
 
@@ -155,7 +155,7 @@ int maximumSubarray(int[] v){
     return maxSum;
 }
 ```
-Since we only traverse the array $v$ once to fill in the $best$ array and then loop through it to fint its greatest element, we end up with a linear complexity $O(n + n) = O(2n) = O(n)$, where $n$ is the length of $v$. 
+Since we only traverse the array $v$ once to fill in the $best$ array and then loop through it to find its greatest element, we end up with a linear complexity $O(n + n) = O(2n) = O(n)$, where $n$ is the length of the array $v$. 
 
 Hopefully after these examples you gained a more detail perception on the maximum subarray problem as well as with using different ideas to decrease the time complexities of algorithms.
 
