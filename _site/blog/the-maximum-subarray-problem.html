@@ -399,21 +399,16 @@ if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNo
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">maximumSubarray</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">v</span><span class="o">){</span>
     <span class="kt">int</span><span class="o">[]</span> <span class="n">best</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">v</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
     <span class="n">best</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
-    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">v</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span><span class="c1">//O(n)</span>
-        <span class="c1">//if positive, add sequence item to sum</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">best</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]&gt;</span><span class="mi">0</span><span class="o">){</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">v</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">best</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]&gt;</span><span class="mi">0</span><span class="o">)</span>
             <span class="n">best</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">best</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">v</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-        <span class="o">}</span>
-        <span class="c1">//if negative, the sum is less then sequence item, so don't add</span>
-        <span class="k">else</span><span class="o">{</span>
+        <span class="k">else</span>
             <span class="n">best</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="c1">//initially assume the max sum is the first int on array best</span>
     <span class="kt">int</span> <span class="n">maxSum</span> <span class="o">=</span> <span class="n">best</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
-    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">best</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span><span class="c1">//O(n)</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">best</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>
         <span class="k">if</span><span class="o">(</span><span class="n">best</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;</span><span class="n">maxSum</span><span class="o">)</span> <span class="n">maxSum</span><span class="o">=</span><span class="n">best</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-    <span class="o">}</span>
+    
     <span class="k">return</span> <span class="n">maxSum</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>

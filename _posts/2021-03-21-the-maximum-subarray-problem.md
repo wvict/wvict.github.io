@@ -137,21 +137,16 @@ Let's implement this idea in Java:
 int maximumSubarray(int[] v){
     int[] best = new int[v.length];
     best[0] = v[0];
-    for(int i=1;i<v.length;i++){//O(n)
-        //if positive, add sequence item to sum
-        if(best[i-1]>0){
+    for(int i=1;i<v.length;i++){
+        if(best[i-1]>0)
             best[i] = best[i-1] + v[i];
-        }
-        //if negative, the sum is less then sequence item, so don't add
-        else{
+        else
             best[i] = v[i];
-        }
     }
-    //initially assume the max sum is the first int on array best
     int maxSum = best[0];
-    for(int i=1;i<best.length;i++){//O(n)
+    for(int i=1;i<best.length;i++)
         if(best[i]>maxSum) maxSum=best[i];
-    }
+    
     return maxSum;
 }
 ```
