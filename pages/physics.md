@@ -15,10 +15,6 @@ On this day I was going to have a thermodynamics test, so I went to the physics 
 
 And thus the habit was created &#128514;. This picture was taken somewhere in the Math department of the Falculty of Sciences and I was reviewing stuff for a Waves and Vibration's test.
 
-![](/assets/images/physics/img3.jpg)
-
-Doing some things with a LED in the physics laboratory.
-
 ![](/assets/images/physics/img4.jpg)
 
 Trust me, when we saw this stuff on the day this photo was taken we couldn't understand any of it either.
@@ -34,5 +30,3 @@ Chalk boards are nice. Specially when they have some math stuff on them.
 ![](/assets/images/physics/img7.jpg)
 
 A multimeter with current coming from the frequency generator - we were probably trying to measure the gain in a OPAMP circuit.
-
-![](/assets/images/physics/img8.jpg)
