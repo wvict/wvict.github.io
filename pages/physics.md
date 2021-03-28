@@ -21,7 +21,7 @@ Trust me, when we saw this stuff on the day this photo was taken we couldn't und
 
 ![](/assets/images/physics/img5.jpg)
 
-Some experiment that involved using capacitors and resistors.
+A lab experiment that involved using capacitors and resistors.
 
 ![](/assets/images/physics/img6.jpg)
 
