@@ -45,6 +45,6 @@ projects:
    description: A multiplayer game where you need to write things as fast as you can
 
 ---
-On this page you can find some of the projects I've worked on in the past. You'll see quite a few full-stack web applications, one RESTful API and one data analysis project. They highlight some of the fields I am most interested in as well as some of technology I've used before. 
+On this page you can find some of the projects I've worked on in the past. You'll see quite a few full-stack web applications, one RESTful API and one data analysis project. They highlight some of the fields I am most interested in as well as some of the technologies I've used before. 
 
 Now a days I really enjoy working with Node.js, Express and MySQL on the back-end. However I do have plans to became more familiar with some of the Python frameworks out there (Django and Flask, I'm talking about you :). I would also like to use more NoSQL databases like Redis and Cassandra in the future.
