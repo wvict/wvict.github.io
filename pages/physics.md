@@ -5,7 +5,7 @@ permalink: /physics/
 ---
 A lot of interesting things happen while you study Physics. Sometimes you feel on top of the world knowing that all the mathematics you study explain beautifuly nature's behavior, feeling privileged by simply being able to understand concepts that took the human mind hundreds, if not thousands of years to discover; others you feel like crap wondering if this or that concept will ever make sense to you given its difficulty. It's a pretty interesting (but also challenging) jorney, to be honest.
 
-Here are some photos I took while doing a Bachelor's degree in Physics at the Universidade do Porto.
+Here are some photos I took while doing a Bachelor's degree in Physics at the University of Porto.
 
 ![thermodynamics](/assets/images/physics/img1.jpg)
 
