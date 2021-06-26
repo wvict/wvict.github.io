@@ -125,7 +125,7 @@ The visited 2D array keeps track of the positions which were already visited, pr
 
 ### Generating subsets
 
-One way you could do this (and the way it's done on the DS class) is to create a boolean array and use it to generate all the combination of trues and falses. For instance, if you have the set {1,2,3}, the set of all subsets is {1,2,3}, {2,3}, {1,2}, {1,3}, {1}, {2}, {3}, {}. If you then create a boolean array and assume the ith boolean value represent the whether the ith position on the set is present or not, then:
+One way you could do this (and that's the way we did it on my Data Structure's class at university) is to create a boolean array and use it to generate all the combination of trues and falses. For instance, if you have the set {1,2,3}, the set of all subsets is {1,2,3}, {2,3}, {1,2}, {1,3}, {1}, {2}, {3}, {}. If you then create a boolean array and assume the ith boolean value represent the whether the ith position on the set is present or not, then:
 ```java
 [True,True,True] = {1,2,3}
 [True,True,False] = {1,2}
