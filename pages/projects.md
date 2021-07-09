@@ -4,6 +4,12 @@ title: Projects
 permalink: /projects/
 
 projects:
+ - title: Open Parking System
+   slug: ops
+   img_href: /assets/images/ops.svg
+   description: Development of a monitoring and control system of public parking spots using the internet
+
+
  - title: Personal blog
    slug: personal-blog
    img_href: /assets/images/logo.svg
