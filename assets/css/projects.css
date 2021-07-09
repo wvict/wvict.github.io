@@ -2,7 +2,29 @@
   display: flex;
   flex-wrap: wrap;
 }
+.card-info{
+  height: 90%;
+}
+.read-more{
+  text-align: center;
+}
+.read-more a{
+  position: relative;
+  height: 10%;
+  bottom: 5px;
+  color: white;
+  background-color: #2a7ae2;
+  padding: 10px;
+  border-radius: 3px;
+
+}
+.read-more a:hover{
+  color: white;
+  text-decoration: none;
+  background-color: rgba(42,122,226,.8);
+}
 .card{
+  position: relative;
   width: 200px;
   height: auto;
   margin: 10px;
@@ -24,16 +46,6 @@
 .description p{
   font-size: 15px;
   margin: 15px 0;
-}
-.description a{
-  color: white;
-  background-color: #2a7ae2;
-  padding:10px;
-  border-radius: 3px;
-}
-.description a:hover{
-  text-decoration: none;
-  background-color: rgba(42,122,226,.8);
 }
 
 @media screen and (max-width:500px){

@@ -11,13 +11,17 @@ layout: default
     <div class="projects-cards">
       {% for project in page.projects %}
         <div class="card">
-          <h1>{{project.title}}</h1>
-          <div class="image">
-            <img src="{{project.img_href}}">
+          <div class="card-info">
+            <h1>{{project.title}}</h1>
+            <div class="image">
+              <img src="{{project.img_href}}">
+            </div>
+            <div class="description">
+              <p>{{project.description}}</p>
+            </div>
           </div>
-          <div class="description">
-            <p>{{project.description}}</p>
-            <a href="/projects/{{project.slug}}">Details</a>
+          <div class="read-more">
+            <a href="/projects/{{project.slug}}">Read more</a>
           </div>
         </div>
       {% endfor %}

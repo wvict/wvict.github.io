@@ -1,5 +1,5 @@
 html {
-  scroll-behavior: smooth
+  scroll-behavior: smooth;
 }
 body{
     margin: 0;
@@ -263,9 +263,11 @@ nav ul li a{
 }
 .title{
     position: absolute;
-    top: -2px;
-    font-size: 25px;
+    text-align: center;
+    top: 3px;
+    font-size: 24px;
     margin: 0;
+    font-weight: bold;
 }
 .item a{
   text-align: center;
